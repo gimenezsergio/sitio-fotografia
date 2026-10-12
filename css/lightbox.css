@@ -63,6 +63,7 @@
   grid-column: 1 / -1;
   grid-row: 2;
   object-fit: contain;
+  touch-action: pan-y;
 }
 
 .lightbox__anterior,

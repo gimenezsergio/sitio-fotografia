@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 9 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 10 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -150,12 +150,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 10 — Lightbox: accesibilidad y tacto
 
-**Estado:** pendiente. **Depende de:** paso 9.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 9.
 **Objetivo:** completar uso con teclado y móvil.  
 **Tareas:** retener foco en visor, restaurarlo al activador, bloquear scroll de fondo, añadir gestos táctiles y respetar movimiento reducido.  
 **Archivos:** `js/lightbox.js`, `css/lightbox.css`, `tests/`.  
 **Criterios de aceptación:** Tab permanece en visor; cierre restaura foco; fondo inmóvil; gesto y botón de cierre funcionan.  
-**Pruebas:** `node --test`, pruebas funcionales de foco y scroll, revisión manual con teclado y pantalla táctil.
+**Pruebas:** `node --test`, pruebas funcionales de foco, scroll y eventos pointer; revisión manual con teclado y visor móvil.
+
+**Registro de cierre:** el diálogo lleva el foco a sus controles, contiene Tab/Shift+Tab, restaura el foco al botón activador y bloquea/restaura el desplazamiento de fondo al cerrar o cancelar. Un gesto horizontal de al menos 48 px cambia la foto; desplazamientos verticales o cortos se ignoran. `touch-action: pan-y` preserva el desplazamiento vertical de página. `node --test` pasó 31/31; validador, comprobación HTTP, sintaxis y `git diff --check` pasaron. En navegador se verificaron foco inicial, ciclo de Tab, restauración del foco y cierre en vista móvil. Los gestos se probaron con eventos pointer automatizados; el navegador de revisión no emula una pantalla táctil física.
 
 ### Paso 11 — Presentación personal
 
