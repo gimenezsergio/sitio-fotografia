@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 7 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 8 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -128,12 +128,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 8 — Composiciones editoriales
 
-**Estado:** pendiente. **Depende de:** paso 7.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 7.
 **Objetivo:** dar ritmo visual a la secuencia sin dividirla en categorías.  
 **Tareas:** implementar ancho completo, vertical destacada, parejas y composición asimétrica según JSON; conservar proporciones salvo encuadre explícito.  
 **Archivos:** `js/gallery.js`, `css/styles.css`, `css/responsive.css`, `data/fotografias.json`, `tests/`.  
 **Criterios de aceptación:** cada composición aparece correctamente; parejas completas; ningún desbordamiento ni recorte imprevisto.  
 **Pruebas:** validador, `node --test`, revisión visual a 360, 390, 768 y 1440 px.
+
+**Registro de cierre:** el renderizador expone `data-composicion` en cada imagen y CSS asigna las seis composiciones desde 768 px; en móvil las imágenes se apilan a ancho completo con proporción intrínseca. El JSON define una apertura de ancho completo, dos parejas completas, una vertical destacada y dos imágenes desplazadas. `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 22/22; `node scripts/comprobar-sitio.mjs` pasó y `git diff --check` quedó limpio. La revisión visual confirmó las parejas lado a lado en 1440 px y apiladas en 390 px, sin desbordamiento ni recortes CSS.
 
 ### Paso 9 — Lightbox: apertura y navegación
 

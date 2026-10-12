@@ -12,6 +12,7 @@ export function renderizarGaleria(fotografias, contenedor, documento = globalThi
       imagen.height = fotografia.alto;
       imagen.loading = 'lazy';
       imagen.decoding = 'async';
+      imagen.dataset.composicion = fotografia.composicion;
       return imagen;
     });
 

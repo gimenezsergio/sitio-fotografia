@@ -145,6 +145,7 @@ main p + p {
 
 .portfolio__grilla > img {
   display: block;
+  grid-column: 1 / -1;
   width: 100%;
   height: auto;
 }

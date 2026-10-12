@@ -22,7 +22,7 @@
       "id": "abrigo-claro-arcos",
       "archivo": "/images/portfolio/02.webp",
       "alt": "Modelo con abrigo claro estampado entre arcos de piedra",
-      "composicion": "ancho-completo",
+      "composicion": "pareja-izquierda",
       "ancho": 1440,
       "alto": 1800
     },
@@ -30,7 +30,7 @@
       "id": "conjunto-falda-marron",
       "archivo": "/images/portfolio/03.jpg",
       "alt": "Modelo con conjunto oscuro y falda marrón en un espacio urbano",
-      "composicion": "ancho-completo",
+      "composicion": "pareja-derecha",
       "ancho": 894,
       "alto": 1192
     },
@@ -38,7 +38,7 @@
       "id": "retrato-estudio",
       "archivo": "/images/portfolio/04.jpg",
       "alt": "Retrato de modelo con conjunto claro en un estudio de fondo neutro",
-      "composicion": "ancho-completo",
+      "composicion": "vertical-destacada",
       "ancho": 1080,
       "alto": 1440
     },
@@ -46,7 +46,7 @@
       "id": "retrato-muro-azul",
       "archivo": "/images/portfolio/05.jpg",
       "alt": "Modelo junto a una pared azul en una escena de moda editorial",
-      "composicion": "ancho-completo",
+      "composicion": "desplazada-izquierda",
       "ancho": 1080,
       "alto": 1440
     },
@@ -54,7 +54,7 @@
       "id": "abrigo-gris-muro",
       "archivo": "/images/portfolio/06.jpg",
       "alt": "Modelo con abrigo gris frente a un muro oscuro",
-      "composicion": "ancho-completo",
+      "composicion": "desplazada-derecha",
       "ancho": 1440,
       "alto": 1919
     },
@@ -62,7 +62,7 @@
       "id": "top-claro-denim",
       "archivo": "/images/portfolio/07.jpg",
       "alt": "Modelo con top claro y prendas de denim en exterior",
-      "composicion": "ancho-completo",
+      "composicion": "pareja-izquierda",
       "ancho": 1080,
       "alto": 1440
     },
@@ -70,7 +70,7 @@
       "id": "conjunto-negro-muro",
       "archivo": "/images/portfolio/08.jpg",
       "alt": "Modelo con conjunto oscuro junto a una pared de piedra clara",
-      "composicion": "ancho-completo",
+      "composicion": "pareja-derecha",
       "ancho": 480,
       "alto": 640
     }

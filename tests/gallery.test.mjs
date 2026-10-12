@@ -6,7 +6,7 @@ function crearDocumentoDePrueba() {
   return {
     createElement(etiqueta) {
       assert.equal(etiqueta, 'img');
-      return {};
+      return { dataset: {} };
     },
   };
 }
@@ -40,6 +40,24 @@ test('renderiza las fotografías en el orden recibido y excluye la portada', () 
 
   assert.equal(renderizarGaleria(fotografias, contenedor, crearDocumentoDePrueba()), 2);
   assert.deepEqual(contenedor.hijos.map((imagen) => imagen.src), ['/images/foto-02.webp', '/images/foto-01.webp']);
+});
+
+test('expone la composición de cada fotografía en un atributo de datos sin cambiar el orden', () => {
+  const contenedor = crearContenedorDePrueba();
+  const composiciones = [
+    'ancho-completo',
+    'vertical-destacada',
+    'pareja-izquierda',
+    'pareja-derecha',
+    'desplazada-izquierda',
+    'desplazada-derecha',
+  ];
+  const fotografias = composiciones.map((composicion, indice) => crearFotografia(`foto-${indice + 1}`, composicion));
+
+  renderizarGaleria(fotografias, contenedor, crearDocumentoDePrueba());
+
+  assert.deepEqual(contenedor.hijos.map((imagen) => imagen.src), fotografias.map((fotografia) => fotografia.archivo));
+  assert.deepEqual(contenedor.hijos.map((imagen) => imagen.dataset.composicion), composiciones);
 });
 
 test('asigna alt, dimensiones y carga diferida sin forzar recorte', () => {
