@@ -8,6 +8,12 @@ export function renderizarPortada(fotografias, contenedor, documento = document)
   imagen.alt = portada.alt;
   imagen.width = portada.ancho;
   imagen.height = portada.alto;
+  if (Array.isArray(portada.variantes) && portada.variantes.length) {
+    const candidatas = [...portada.variantes, { archivo: portada.archivo, ancho: portada.ancho }]
+      .sort((a, b) => a.ancho - b.ancho);
+    imagen.srcset = candidatas.map(({ archivo, ancho }) => `${archivo} ${ancho}w`).join(', ');
+    imagen.sizes = '(min-width: 768px) 50vw, 100vw';
+  }
   imagen.loading = 'eager';
   imagen.fetchPriority = 'high';
 

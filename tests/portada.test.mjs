@@ -24,7 +24,7 @@ function crearContenedorDePrueba() {
 test('renderiza la portada con texto alternativo, dimensiones, prioridad y encuadres', () => {
   const contenedor = crearContenedorDePrueba();
   const fotografias = [
-    { id: 'portada', archivo: '/images/portada/portada.webp', alt: 'Modelo frente a un arco', composicion: 'portada', ancho: 1800, alto: 2400, posicionMovil: '50% 35%', posicionEscritorio: '45% 50%' },
+    { id: 'portada', archivo: '/images/portada/portada.webp', alt: 'Modelo frente a un arco', composicion: 'portada', ancho: 1800, alto: 2400, variantes: [{ archivo: '/images/portada-800.webp', ancho: 800 }, { archivo: '/images/portada-480.webp', ancho: 480 }], posicionMovil: '50% 35%', posicionEscritorio: '45% 50%' },
     { id: 'foto-01', composicion: 'ancho-completo' },
   ];
 
@@ -34,6 +34,8 @@ test('renderiza la portada con texto alternativo, dimensiones, prioridad y encua
   assert.equal(imagen.alt, 'Modelo frente a un arco');
   assert.equal(imagen.width, 1800);
   assert.equal(imagen.height, 2400);
+  assert.equal(imagen.srcset, '/images/portada-480.webp 480w, /images/portada-800.webp 800w, /images/portada/portada.webp 1800w');
+  assert.equal(imagen.sizes, '(min-width: 768px) 50vw, 100vw');
   assert.equal(imagen.loading, 'eager');
   assert.equal(imagen.fetchPriority, 'high');
   assert.deepEqual(imagen.style.valores, { '--posicion-movil': '50% 35%', '--posicion-escritorio': '45% 50%' });

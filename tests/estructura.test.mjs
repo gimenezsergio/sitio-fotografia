@@ -68,6 +68,14 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/images/portfolio/08.jpg', 'image/jpeg'],
   ];
 
+  const configuracion = JSON.parse(await readFile(new URL('../data/fotografias.json', import.meta.url), 'utf8'));
+  for (const fotografia of configuracion.fotografias) {
+    for (const variante of fotografia.variantes ?? []) {
+      const extension = variante.archivo.split('.').at(-1);
+      recursos.push([variante.archivo, extension === 'webp' ? 'image/webp' : 'image/jpeg']);
+    }
+  }
+
   for (const [ruta, tipo] of recursos) {
     const respuesta = await fetch(`${origen}${ruta}`);
     assert.equal(respuesta.status, 200, ruta);

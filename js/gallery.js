@@ -16,6 +16,14 @@ export function renderizarGaleria(fotografias, contenedor, documento = globalThi
       imagen.alt = fotografia.alt;
       imagen.width = fotografia.ancho;
       imagen.height = fotografia.alto;
+      if (Array.isArray(fotografia.variantes) && fotografia.variantes.length) {
+        const candidatas = [...fotografia.variantes, { archivo: fotografia.archivo, ancho: fotografia.ancho }]
+          .sort((a, b) => a.ancho - b.ancho);
+        imagen.srcset = candidatas.map(({ archivo, ancho }) => `${archivo} ${ancho}w`).join(', ');
+        imagen.sizes = fotografia.composicion === 'ancho-completo'
+          ? '100vw'
+          : '(min-width: 768px) 50vw, 100vw';
+      }
       imagen.loading = 'lazy';
       imagen.decoding = 'async';
       boton.append(imagen);

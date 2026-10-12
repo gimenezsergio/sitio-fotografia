@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 10 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 10 y 13 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -179,12 +179,13 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 13 — Imágenes responsive y rendimiento
 
-**Estado:** pendiente. **Depende de:** pasos 6 a 8 y originales autorizados.  
+**Estado:** completado (12/10/2026). **Depende de:** pasos 6 a 8 y fotos incorporadas.
 **Objetivo:** evitar transferencias excesivas y saltos de diseño.  
-**Tareas:** generar variantes WebP y AVIF cuando convenga; `srcset`/`sizes`; priorizar portada, carga diferida del portfolio y dimensiones explícitas.  
-**Archivos:** `data/fotografias.json`, `images/`, `js/gallery.js`, `js/main.js`, `index.html`, `scripts/validar-fotografias.mjs`, `tests/`.  
-**Criterios de aceptación:** móvil descarga tamaños apropiados, portada tiene prioridad, galería no se descarga de inicio y diseño se mantiene estable.  
-**Pruebas:** validador, `node --test`, inspección de red móvil y Lighthouse representativo sin umbral arbitrario previo.
+**Tareas:** generar variantes JPEG/WebP a 480 y 800 px sin ampliar originales; usar `srcset`/`sizes`; priorizar portada, carga diferida del portfolio y dimensiones explícitas. No se agregó AVIF porque no se justificó sumar otro formato.
+**Archivos:** `data/fotografias.json`, `images/portada/variantes/`, `images/portfolio/variantes/`, `js/portada.js`, `js/gallery.js`, `README.md`, `tests/estructura.test.mjs`, `tests/portada.test.mjs`, `tests/gallery.test.mjs`.
+**Criterios de aceptación:** cada variante existe y conserva el formato original; el renderizador produce `srcset` ordenado y `sizes`; la portada conserva prioridad alta y dimensiones; la galería mantiene carga diferida y dimensiones; todos los recursos responden con MIME correcto.
+**Pruebas:** `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 32/32; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. Los tests HTTP solicitaron las 17 variantes y verificaron código 200 y MIME. La inspección visual local confirmó la portada y las ocho fotos renderizadas; el cálculo del candidato por viewport queda cubierto por `srcset`/`sizes` y pruebas unitarias, sin una medición Lighthouse ni captura de red emulada.
+**Registro de cierre:** se generaron 16 variantes para portada y siete fotos de galería. La foto 08 (480 px original) no se amplió ni recibió una variante. El formato de cada original se conserva; las imágenes mantienen dimensiones intrínsecas, la portada usa `fetchPriority=high` y la galería `loading=lazy`/`decoding=async`. Se corrigió además una frase obsoleta del README que decía que la configuración seguía vacía.
 
 ### Paso 14 — SEO y revisión integral
 

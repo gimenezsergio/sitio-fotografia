@@ -7,6 +7,10 @@
       "composicion": "portada",
       "ancho": 1080,
       "alto": 1440,
+      "variantes": [
+        { "archivo": "/images/portada/variantes/portada-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portada/variantes/portada-800.jpg", "ancho": 800 }
+      ],
       "posicionMovil": "50% 50%",
       "posicionEscritorio": "50% 50%"
     },
@@ -16,7 +20,11 @@
       "alt": "Modelo con campera gris con capucha frente a una pared urbana",
       "composicion": "ancho-completo",
       "ancho": 1440,
-      "alto": 1920
+      "alto": 1920,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/01-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/01-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "abrigo-claro-arcos",
@@ -24,7 +32,11 @@
       "alt": "Modelo con abrigo claro estampado entre arcos de piedra",
       "composicion": "pareja-izquierda",
       "ancho": 1440,
-      "alto": 1800
+      "alto": 1800,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/02-480.webp", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/02-800.webp", "ancho": 800 }
+      ]
     },
     {
       "id": "conjunto-falda-marron",
@@ -32,7 +44,11 @@
       "alt": "Modelo con conjunto oscuro y falda marrón en un espacio urbano",
       "composicion": "pareja-derecha",
       "ancho": 894,
-      "alto": 1192
+      "alto": 1192,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/03-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/03-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "retrato-estudio",
@@ -40,7 +56,11 @@
       "alt": "Retrato de modelo con conjunto claro en un estudio de fondo neutro",
       "composicion": "vertical-destacada",
       "ancho": 1080,
-      "alto": 1440
+      "alto": 1440,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/04-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/04-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "retrato-muro-azul",
@@ -48,7 +68,11 @@
       "alt": "Modelo junto a una pared azul en una escena de moda editorial",
       "composicion": "desplazada-izquierda",
       "ancho": 1080,
-      "alto": 1440
+      "alto": 1440,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/05-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/05-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "abrigo-gris-muro",
@@ -56,7 +80,11 @@
       "alt": "Modelo con abrigo gris frente a un muro oscuro",
       "composicion": "desplazada-derecha",
       "ancho": 1440,
-      "alto": 1919
+      "alto": 1919,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/06-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/06-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "top-claro-denim",
@@ -64,7 +92,11 @@
       "alt": "Modelo con top claro y prendas de denim en exterior",
       "composicion": "pareja-izquierda",
       "ancho": 1080,
-      "alto": 1440
+      "alto": 1440,
+      "variantes": [
+        { "archivo": "/images/portfolio/variantes/07-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/variantes/07-800.jpg", "ancho": 800 }
+      ]
     },
     {
       "id": "conjunto-negro-muro",

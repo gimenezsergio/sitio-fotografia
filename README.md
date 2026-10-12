@@ -35,7 +35,11 @@ No se requieren paquetes externos. Node.js no forma parte de los requisitos del 
 - `composicion`: `portada`, `ancho-completo`, `vertical-destacada`, `pareja-izquierda`, `pareja-derecha`, `desplazada-izquierda` o `desplazada-derecha`.
 - `ancho` y `alto`: dimensiones originales en píxeles, como enteros positivos.
 
-La lista debe tener exactamente una portada. Una foto `pareja-izquierda` debe ir inmediatamente antes de su `pareja-derecha`. Solo la portada admite `posicionMovil` y `posicionEscritorio`, cada una con dos porcentajes (por ejemplo, `"50% 40%"`). Las variantes responsive son opcionales y usan `{ "archivo": "/images/portada-800.webp", "ancho": 800 }`; sus anchos deben ser únicos y menores que el original.
+La lista debe tener exactamente una portada. Una foto `pareja-izquierda` debe ir inmediatamente antes de su `pareja-derecha`. Solo la portada admite `posicionMovil` y `posicionEscritorio`, cada una con dos porcentajes (por ejemplo, `"50% 40%"`). Las variantes responsive son opcionales y usan `{ "archivo": "/images/portada-800.webp", "ancho": 800 }`; sus anchos deben ser únicos y menores que el original. El sitio las convierte en `srcset`/`sizes`; guardá cada variante bajo `/images/` y mantené su formato (JPEG o WebP). En este proyecto se generan con ImageMagick, que solo hace falta al preparar imágenes y no al servir el sitio:
+
+```sh
+magick imagen-original.jpg -resize '800x>' -quality 82 imagen-800.jpg
+```
 
 Validá el archivo antes de incorporarlo:
 
@@ -43,4 +47,4 @@ Validá el archivo antes de incorporarlo:
 node scripts/validar-fotografias.mjs
 ```
 
-También podés indicar otro archivo JSON como argumento. El validador exige al menos una foto y que todos los archivos existan. Por eso, la configuración inicial permanece vacía hasta recibir e incorporar fotografías autorizadas; las pruebas automatizadas usan imágenes temporales y no agregan fotos ficticias al portfolio.
+También podés indicar otro archivo JSON como argumento. El validador exige al menos una foto y que todos los archivos existan. Las pruebas automatizadas usan imágenes temporales y no agregan fotos ficticias al portfolio.

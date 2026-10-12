@@ -90,6 +90,22 @@ test('mantiene alt, dimensiones y carga diferida en la imagen del botón', () =>
   assert.equal(imagen.style, undefined);
 });
 
+test('genera srcset ordenado y sizes según la composición cuando hay variantes', () => {
+  const fotografia = {
+    ...crearFotografia('foto-responsive', 'pareja-izquierda'),
+    variantes: [
+      { archivo: '/images/foto-800.webp', ancho: 800 },
+      { archivo: '/images/foto-480.webp', ancho: 480 },
+    ],
+  };
+  const contenedor = crearContenedorDePrueba();
+
+  renderizarGaleria([fotografia], contenedor, crearDocumentoDePrueba());
+  const imagen = contenedor.hijos[0].hijos[0];
+  assert.equal(imagen.srcset, '/images/foto-480.webp 480w, /images/foto-800.webp 800w, /images/foto-responsive.webp 1800w');
+  assert.equal(imagen.sizes, '(min-width: 768px) 50vw, 100vw');
+});
+
 test('notifica el índice de galería correspondiente cuando se activa cada foto', () => {
   const contenedor = crearContenedorDePrueba();
   const activaciones = [];
