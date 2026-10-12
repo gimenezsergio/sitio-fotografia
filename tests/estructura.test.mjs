@@ -26,6 +26,17 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.match(html, /href="\/css\/responsive\.css"/);
   assert.match(html, /src="\/js\/main\.js"/);
   assert.match(html, /Fotografía de moda y editorial/);
+  assert.match(html, /href="#contacto"/);
+  assert.match(html, /id="contacto"/);
+  assert.match(html, /class="portada"/);
+  assert.match(html, /class="presentacion"/);
+  assert.match(html, /class="contacto"/);
+
+  const galeria = html.match(/<section class="portfolio"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(galeria, 'la galería debe estar presente');
+  assert.equal((galeria.match(/class="marcador-imagen /g) ?? []).length, 8);
+  assert.match(html, /Fotografía de portada pendiente/);
+  assert.match(html, /Retrato pendiente/);
 });
 
 test('la página y sus recursos responden por HTTP con tipos correctos', async () => {

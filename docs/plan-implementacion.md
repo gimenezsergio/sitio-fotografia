@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** pendiente de autorización explícita para iniciar el paso 1.  
+**Estado general:** en desarrollo; pasos 1, 2 y 3 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -19,6 +19,16 @@ No hay contradicciones estructurales. La especificación se declara lista para i
 | VPS existente | Se desconocen servicios, rutas y acceso. | Inspeccionar antes de definir o aplicar configuración; no afectar servicios existentes. Antes del paso 15. |
 
 El texto provisional de presentación puede usarse hasta que Sergio entregue la versión final. El HTML inicial contendrá los textos principales aunque falle JavaScript. Las descripciones alternativas serán accesibles y nunca pies visibles. Un fallo de carga del JSON mostrará un aviso discreto en castellano.
+
+## Ajuste visual solicitado después del paso 2
+
+**Estado:** completado (12/10/2026). **Objetivo:** mostrar en el navegador la maqueta completa de la página, no solo la tipografía inicial.
+**Tareas:** incorporar las cuatro secciones del MVP, navegación interna y marcadores visibles en castellano para los archivos fotográficos aún pendientes.
+**Archivos:** `index.html`, `css/styles.css`, `css/responsive.css`, `tests/estructura.test.mjs`.
+**Criterios de aceptación:** la página muestra portada, portfolio con ocho espacios, presentación y contacto; las fotos pendientes se identifican como temporales; navegación al contacto funciona y el diseño no desborda en móvil/escritorio.
+**Pruebas:** `node --test`, comprobación HTTP, revisión visual en 360, 390, 768 y 1440 px.
+
+**Registro de cierre:** `index.html` presenta las cuatro áreas, ocho espacios de galería y avisos temporales para portada, retrato y correo sin inventar recursos. El enlace `CONTACTO` cambia el destino a `#contacto`. `node --test` pasó 5/5 pruebas y la comprobación HTTP pasó para todos los recursos. Se revisaron capturas en 360, 390, 768 y 1440 px; se corrigió la cuadrícula de portada en escritorio tras detectar que el texto quedaba debajo de la imagen.
 
 ### Preselección fotográfica aceptada
 
@@ -61,12 +71,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 3 — Cabecera y destino de navegación
 
-**Estado:** pendiente. **Depende de:** paso 2.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 2.
 **Objetivo:** hacer funcional la navegación mínima.  
 **Tareas:** cabecera con solo `SERGIO GIMENEZ` y `CONTACTO`; crear destino semántico de la sección final y ajustar foco y ancla.  
 **Archivos:** `index.html`, `css/styles.css`, `css/responsive.css`, `tests/`.  
 **Criterios de aceptación:** el enlace llega al destino con teclado y ratón sin ocultar contenido.  
 **Pruebas:** `node --test`, Tab y Enter, revisión a 360 y 1440 px.
+
+**Registro de cierre:** cabecera con nombre y enlace `CONTACTO`; se verificó el destino `#contacto` en navegador y el enlace interno se incluye en las pruebas de estructura.
 
 ### Paso 4 — Contrato y validación de fotografías
 

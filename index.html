@@ -11,13 +11,51 @@
   </head>
   <body>
     <header>
-      <a href="/" aria-label="Inicio — Sergio Gimenez">SERGIO GIMENEZ</a>
+      <a class="marca" href="#inicio" aria-label="Inicio — Sergio Gimenez">SERGIO GIMENEZ</a>
+      <a class="enlace-contacto" href="#contacto">CONTACTO</a>
     </header>
-    <main>
-      <section aria-labelledby="presentacion-titulo">
-        <h1 id="presentacion-titulo">Sergio Gimenez</h1>
-        <p>Fotografía de moda y editorial</p>
-        <p>Buenos Aires, Argentina</p>
+    <main id="contenido">
+      <section class="portada" id="inicio" aria-labelledby="presentacion-titulo">
+        <div class="marcador-imagen portada__imagen" role="img" aria-label="Espacio reservado para la fotografía de portada">
+          <span>Fotografía de portada pendiente</span>
+        </div>
+        <div class="portada__texto">
+          <p class="sobrelinea">Buenos Aires, Argentina</p>
+          <h1 id="presentacion-titulo">Sergio Gimenez</h1>
+          <p class="especialidad">Fotografía de moda y editorial</p>
+        </div>
+      </section>
+
+      <section class="portfolio" aria-label="Portfolio fotográfico">
+        <div class="portfolio__grilla">
+          <div class="marcador-imagen marcador-imagen--uno" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--dos" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--tres" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--cuatro" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--cinco" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--seis" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--siete" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+          <div class="marcador-imagen marcador-imagen--ocho" role="img" aria-label="Espacio reservado para una fotografía del portfolio"><span>Fotografía pendiente</span></div>
+        </div>
+      </section>
+
+      <section class="presentacion" aria-labelledby="presentacion-personal-titulo">
+        <div class="marcador-imagen presentacion__retrato" role="img" aria-label="Espacio reservado para el retrato de Sergio Gimenez">
+          <span>Retrato pendiente</span>
+        </div>
+        <div class="presentacion__texto">
+          <p class="sobrelinea">El fotógrafo</p>
+          <h2 id="presentacion-personal-titulo">Sergio Gimenez</h2>
+          <p>Soy Sergio Gimenez, fotógrafo de moda y retrato editorial en Buenos Aires. Me interesa construir imágenes donde el vestuario, la luz y los espacios dialoguen con la personalidad de cada modelo.</p>
+          <p class="presentacion__ubicacion">Buenos Aires, Argentina</p>
+        </div>
+      </section>
+
+      <section class="contacto" id="contacto" aria-labelledby="contacto-titulo">
+        <p class="sobrelinea">Buenos Aires, Argentina</p>
+        <h2 id="contacto-titulo">Hablemos</h2>
+        <a href="https://www.instagram.com/sergiogimenezph/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <p class="contacto__pendiente">Correo electrónico pendiente de configurar</p>
       </section>
     </main>
   </body>
