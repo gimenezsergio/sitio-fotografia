@@ -24,6 +24,7 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.match(html, /<html lang="es-AR">/);
   assert.match(html, /href="\/css\/styles\.css"/);
   assert.match(html, /href="\/css\/responsive\.css"/);
+  assert.match(html, /href="\/css\/lightbox\.css"/);
   assert.match(html, /src="\/js\/main\.js"/);
   assert.match(html, /Fotografía de moda y editorial/);
   assert.match(html, /href="#contacto"/);
@@ -39,6 +40,11 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.equal((galeria.match(/class="marcador-imagen /g) ?? []).length, 8);
   assert.match(html, /Fotografía de portada pendiente/);
   assert.match(html, /Retrato pendiente/);
+  assert.match(html, /<dialog class="lightbox" id="lightbox" aria-label="Visor de fotografías" aria-modal="true">/);
+  assert.match(html, /class="lightbox__cerrar" type="button">Cerrar/);
+  assert.match(html, /class="lightbox__anterior" type="button">Anterior/);
+  assert.match(html, /class="lightbox__siguiente" type="button">Siguiente/);
+  assert.match(html, /<img class="lightbox__imagen" alt="">/);
 });
 
 test('la página y sus recursos responden por HTTP con tipos correctos', async () => {
@@ -46,8 +52,10 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/', 'text/html'],
     ['/css/styles.css', 'text/css'],
     ['/css/responsive.css', 'text/css'],
+    ['/css/lightbox.css', 'text/css'],
     ['/js/main.js', 'text/javascript'],
     ['/js/gallery.js', 'text/javascript'],
+    ['/js/lightbox.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
     ['/images/portada/portada.jpg', 'image/jpeg'],
     ['/images/portfolio/01.jpg', 'image/jpeg'],

@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 8 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 9 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -139,12 +139,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 9 — Lightbox: apertura y navegación
 
-**Estado:** pendiente. **Depende de:** paso 7.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 7.
 **Objetivo:** ampliar y recorrer todas las fotos.  
 **Tareas:** visor oscuro con imagen completa, botones anterior/siguiente/cerrar, Escape y flechas; nombres accesibles en castellano.  
 **Archivos:** `index.html`, `js/lightbox.js`, `js/gallery.js`, `css/lightbox.css`, `tests/`.  
 **Criterios de aceptación:** cualquiera de las ocho fotos abre; se recorre y cierra; sin recortes ni metadatos visibles.  
 **Pruebas:** `node --test` y pruebas funcionales de botones, límites, Escape y flechas; incorporar Playwright como herramienta de desarrollo si se aprueba.
+
+**Registro de cierre:** se agregó un visor basado en `<dialog>` nativo. Cada imagen se abre en el índice correcto, los controles anterior/siguiente se deshabilitan en los límites, y el usuario puede recorrer con botones o flechas, y cerrar con botón o Escape. La imagen usa `object-fit: contain` y no hay metadatos visibles. `node --test` pasó 28/28; validador, comprobación HTTP y `git diff --check` pasaron. La comprobación manual confirmó apertura, siguiente, flecha derecha, Escape e imagen completa a 390 px y escritorio. Playwright no se agregó; no es necesario para este paso y el plan lo condiciona a aprobación.
 
 ### Paso 10 — Lightbox: accesibilidad y tacto
 

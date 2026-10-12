@@ -143,9 +143,23 @@ main p + p {
   gap: 0.75rem;
 }
 
-.portfolio__grilla > img {
+.portfolio__grilla > button {
   display: block;
   grid-column: 1 / -1;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.portfolio__grilla > button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.portfolio__grilla > button > img {
+  display: block;
   width: 100%;
   height: auto;
 }

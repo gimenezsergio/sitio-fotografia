@@ -7,6 +7,7 @@
     <title>Sergio Gimenez — Fotografía de moda y editorial</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/lightbox.css">
     <script type="module" src="/js/main.js"></script>
   </head>
   <body>
@@ -59,5 +60,13 @@
         <p class="contacto__pendiente">Correo electrónico pendiente de configurar</p>
       </section>
     </main>
+    <dialog class="lightbox" id="lightbox" aria-label="Visor de fotografías" aria-modal="true">
+      <div class="lightbox__contenido">
+        <button class="lightbox__cerrar" type="button">Cerrar</button>
+        <img class="lightbox__imagen" alt="">
+        <button class="lightbox__anterior" type="button">Anterior</button>
+        <button class="lightbox__siguiente" type="button">Siguiente</button>
+      </div>
+    </dialog>
   </body>
 </html>

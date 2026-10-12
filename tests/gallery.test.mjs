@@ -2,12 +2,26 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { renderizarGaleria } from '../js/gallery.js';
 
+function crearElemento(etiqueta) {
+  const escuchas = new Map();
+  return {
+    etiqueta,
+    dataset: {},
+    addEventListener(tipo, controlador) {
+      escuchas.set(tipo, controlador);
+    },
+    append(...hijos) {
+      this.hijos = hijos;
+    },
+    hacerClick() {
+      escuchas.get('click')?.();
+    },
+  };
+}
+
 function crearDocumentoDePrueba() {
   return {
-    createElement(etiqueta) {
-      assert.equal(etiqueta, 'img');
-      return { dataset: {} };
-    },
+    createElement: crearElemento,
   };
 }
 
@@ -30,7 +44,7 @@ function crearFotografia(id, composicion = 'ancho-completo') {
   };
 }
 
-test('renderiza las fotografías en el orden recibido y excluye la portada', () => {
+test('renderiza botones de galería en el orden recibido y excluye la portada', () => {
   const contenedor = crearContenedorDePrueba();
   const fotografias = [
     crearFotografia('foto-02'),
@@ -39,10 +53,12 @@ test('renderiza las fotografías en el orden recibido y excluye la portada', () 
   ];
 
   assert.equal(renderizarGaleria(fotografias, contenedor, crearDocumentoDePrueba()), 2);
-  assert.deepEqual(contenedor.hijos.map((imagen) => imagen.src), ['/images/foto-02.webp', '/images/foto-01.webp']);
+  assert.deepEqual(contenedor.hijos.map((boton) => boton.hijos[0].src), ['/images/foto-02.webp', '/images/foto-01.webp']);
+  assert.deepEqual(contenedor.hijos.map((boton) => boton.etiqueta), ['button', 'button']);
+  assert.deepEqual(contenedor.hijos.map((boton) => boton.type), ['button', 'button']);
 });
 
-test('expone la composición de cada fotografía en un atributo de datos sin cambiar el orden', () => {
+test('expone la composición en el botón sin cambiar el orden de la galería', () => {
   const contenedor = crearContenedorDePrueba();
   const composiciones = [
     'ancho-completo',
@@ -56,22 +72,38 @@ test('expone la composición de cada fotografía en un atributo de datos sin cam
 
   renderizarGaleria(fotografias, contenedor, crearDocumentoDePrueba());
 
-  assert.deepEqual(contenedor.hijos.map((imagen) => imagen.src), fotografias.map((fotografia) => fotografia.archivo));
-  assert.deepEqual(contenedor.hijos.map((imagen) => imagen.dataset.composicion), composiciones);
+  assert.deepEqual(contenedor.hijos.map((boton) => boton.hijos[0].src), fotografias.map((fotografia) => fotografia.archivo));
+  assert.deepEqual(contenedor.hijos.map((boton) => boton.dataset.composicion), composiciones);
 });
 
-test('asigna alt, dimensiones y carga diferida sin forzar recorte', () => {
+test('mantiene alt, dimensiones y carga diferida en la imagen del botón', () => {
   const contenedor = crearContenedorDePrueba();
   const fotografia = { ...crearFotografia('foto-horizontal'), ancho: 2400, alto: 1600 };
 
   renderizarGaleria([fotografia], contenedor, crearDocumentoDePrueba());
-  const imagen = contenedor.hijos[0];
+  const imagen = contenedor.hijos[0].hijos[0];
   assert.equal(imagen.alt, 'Fotografía foto-horizontal');
   assert.equal(imagen.width, 2400);
   assert.equal(imagen.height, 1600);
   assert.equal(imagen.loading, 'lazy');
   assert.equal(imagen.decoding, 'async');
   assert.equal(imagen.style, undefined);
+});
+
+test('notifica el índice de galería correspondiente cuando se activa cada foto', () => {
+  const contenedor = crearContenedorDePrueba();
+  const activaciones = [];
+  const fotografias = [crearFotografia('foto-01'), crearFotografia('portada', 'portada'), crearFotografia('foto-02')];
+
+  renderizarGaleria(fotografias, contenedor, crearDocumentoDePrueba(), {
+    alSeleccionar(indice, fotografia) {
+      activaciones.push([indice, fotografia.id]);
+    },
+  });
+
+  contenedor.hijos[0].hacerClick();
+  contenedor.hijos[1].hacerClick();
+  assert.deepEqual(activaciones, [[0, 'foto-01'], [1, 'foto-02']]);
 });
 
 test('vacía el contenedor y devuelve cero cuando la lista no tiene fotografías de galería', () => {
