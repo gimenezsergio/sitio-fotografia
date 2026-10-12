@@ -31,6 +31,8 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.match(html, /class="portada"/);
   assert.match(html, /class="presentacion"/);
   assert.match(html, /class="contacto"/);
+  assert.match(html, /id="aviso-carga" role="status" hidden/);
+  assert.match(html, /No se pudieron cargar las fotografías/);
 
   const galeria = html.match(/<section class="portfolio"[\s\S]*?<\/section>/)?.[0];
   assert.ok(galeria, 'la galería debe estar presente');

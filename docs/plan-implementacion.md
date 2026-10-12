@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 4 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 5 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -93,12 +93,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 5 — Carga del JSON en navegador
 
-**Estado:** pendiente. **Depende de:** paso 4.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 4.
 **Objetivo:** leer configuración sin dejar la página vacía ante un fallo.  
 **Tareas:** cargar JSON con `fetch`, distinguir éxito y error y mostrar aviso discreto en castellano; separar carga y renderizado.  
 **Archivos:** `js/main.js`, `index.html`, `css/styles.css`, `tests/`.  
 **Criterios de aceptación:** los datos válidos se leen por HTTP; respuesta fallida o JSON inválido muestra el aviso; el texto principal permanece.  
 **Pruebas:** `node --test`, prueba de navegador con carga correcta y fallida, consola sin errores no controlados.
+
+**Registro de cierre:** se agregó un cargador independiente que obtiene y valida la forma de la lista JSON, y el punto de entrada muestra un aviso accesible y discreto ante fallos HTTP, de red o de análisis. El contenido principal ya presente en HTML permanece disponible. `node --test` pasó 14/14 pruebas: carga, error HTTP, estructura JSON, fallos de red/análisis, aviso en HTML y recursos servidos por HTTP.
 
 ### Paso 6 — Portada editorial
 
