@@ -73,16 +73,18 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/images/perfil/variantes/sergio-900.webp', 'image/webp'],
     ['/images/portfolio/01.jpg', 'image/jpeg'],
     ['/images/portfolio/02.webp', 'image/webp'],
-    ['/images/portfolio/03.jpg', 'image/jpeg'],
     ['/images/portfolio/04.jpg', 'image/jpeg'],
     ['/images/portfolio/05.jpg', 'image/jpeg'],
-    ['/images/portfolio/06.jpg', 'image/jpeg'],
     ['/images/portfolio/07.jpg', 'image/jpeg'],
-    ['/images/portfolio/08.jpg', 'image/jpeg'],
   ];
 
   const configuracion = JSON.parse(await readFile(new URL('../data/fotografias.json', import.meta.url), 'utf8'));
   for (const fotografia of configuracion.fotografias) {
+    if (fotografia.composicion !== 'portada') {
+      const extension = fotografia.archivo.split('.').at(-1);
+      const tipo = extension === 'webp' ? 'image/webp' : extension === 'png' ? 'image/png' : 'image/jpeg';
+      recursos.push([fotografia.archivo, tipo]);
+    }
     for (const variante of fotografia.variantes ?? []) {
       const extension = variante.archivo.split('.').at(-1);
       recursos.push([variante.archivo, extension === 'webp' ? 'image/webp' : 'image/jpeg']);
@@ -104,8 +106,8 @@ test('la configuración de producción define ocho fotos de galería en orden', 
   const fotografias = JSON.parse(contenido).fotografias;
   assert.equal(fotografias.filter((foto) => foto.composicion === 'portada').length, 1);
   assert.deepEqual(fotografias.filter((foto) => foto.composicion !== 'portada').map((foto) => foto.id), [
-    'capucha-gris', 'abrigo-claro-arcos', 'conjunto-falda-marron', 'retrato-estudio',
-    'retrato-muro-azul', 'abrigo-gris-muro', 'top-claro-denim', 'conjunto-negro-muro',
+    'capucha-gris', 'abrigo-claro-arcos', 'flores-fondo-rosa', 'retrato-estudio',
+    'moda-urbana-mochila', 'denim-muro-turquesa', 'top-claro-denim', 'retrato-blanco-negro',
   ]);
 });
 

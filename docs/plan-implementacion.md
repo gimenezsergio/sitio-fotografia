@@ -124,7 +124,9 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 **Registro de cierre:** se añadieron ocho fotos de galería al JSON y un módulo Vanilla JS que las renderiza en el orden configurado, con textos alternativos, dimensiones y carga diferida; la portada se excluye de la galería. La cuadrícula mantiene las proporciones y presenta la secuencia a una columna para dejar las composiciones editoriales para el paso 8. `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 21/21; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. HTTP confirmó el módulo y los ocho archivos con sus tipos MIME. En navegador se verificaron las ocho imágenes y el orden en el árbol accesible, y la visualización a 390 px y escritorio no mostró recortes ni desbordamiento.
 
-**Nota de contenido:** siete fotos corresponden a las publicaciones preseleccionadas. Para la octava posición se incorporó una imagen alternativa del perfil (vestuario oscuro contra pared clara), porque el navegador no pudo extraer el recurso de la publicación DSF6rP5icK2. Es una miniatura de 480 × 640; reemplazarla por el archivo original antes del cierre editorial/publicación si se elige esta foto.
+**Nota de contenido inicial:** siete fotos correspondían a las publicaciones preseleccionadas. Para la octava posición se incorporó entonces una miniatura alternativa de 480 × 640 del perfil porque no se pudo extraer el recurso original. Esa imagen ya no forma parte de la selección activa.
+
+**Actualización de selección (12/10/2026):** Sergio eliminó las fotos iniciales 03, 06 y 08 y agregó cuatro archivos en `images/portfolio/nuevas/`. La galería activa conserva 01, 02, 04 y 07 e incorpora las cuatro nuevas; la foto 05 se reemplazó en la secuencia por la nueva del muro turquesa para reducir la repetición de fondos azules. El JSON vuelve a cumplir la cantidad de ocho fotos y no referencia las imágenes eliminadas.
 
 ### Paso 8 — Composiciones editoriales
 
@@ -188,6 +190,8 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 **Criterios de aceptación:** cada variante existe y conserva el formato original; el renderizador produce `srcset` ordenado y `sizes`; la portada conserva prioridad alta y dimensiones; la galería mantiene carga diferida y dimensiones; todos los recursos responden con MIME correcto.
 **Pruebas:** `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 32/32; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. Los tests HTTP solicitaron las 16 variantes y verificaron código 200 y MIME. La inspección visual local confirmó la portada y las ocho fotos renderizadas; el cálculo del candidato por viewport queda cubierto por `srcset`/`sizes` y pruebas unitarias, sin una medición Lighthouse ni captura de red emulada.
 **Registro de cierre:** se generaron 16 variantes para portada y siete fotos de galería. La foto 08 (480 px original) no se amplió ni recibió una variante. El formato de cada original se conserva; las imágenes mantienen dimensiones intrínsecas, la portada usa `fetchPriority=high` y la galería `loading=lazy`/`decoding=async`. Se corrigió además una frase obsoleta del README que decía que la configuración seguía vacía.
+
+**Actualización de contenido (12/10/2026):** se generaron ocho variantes responsive para las cuatro fotos nuevas. La configuración activa suma ahora 18 variantes entre portada y ocho fotos, manteniendo el formato de origen en cada una.
 
 ### Paso 14 — SEO y revisión integral
 
