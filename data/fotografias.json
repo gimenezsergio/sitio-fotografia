@@ -1,3 +1,14 @@
 {
-  "fotografias": []
+  "fotografias": [
+    {
+      "id": "portada",
+      "archivo": "/images/portada/portada.jpg",
+      "alt": "Modelo con vestido oscuro frente a una fachada de arcos en Buenos Aires",
+      "composicion": "portada",
+      "ancho": 1080,
+      "alto": 1440,
+      "posicionMovil": "50% 50%",
+      "posicionEscritorio": "50% 50%"
+    }
+  ]
 }

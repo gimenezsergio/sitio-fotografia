@@ -5,10 +5,15 @@ import path from 'node:path';
 
 const raizProyecto = path.resolve(fileURLToPath(new URL('../', import.meta.url)));
 const tiposContenido = new Map([
+  ['.avif', 'image/avif'],
   ['.css', 'text/css; charset=utf-8'],
   ['.html', 'text/html; charset=utf-8'],
+  ['.jpeg', 'image/jpeg'],
+  ['.jpg', 'image/jpeg'],
   ['.js', 'text/javascript; charset=utf-8'],
   ['.json', 'application/json; charset=utf-8'],
+  ['.png', 'image/png'],
+  ['.webp', 'image/webp'],
 ]);
 
 export function crearServidorLocal() {

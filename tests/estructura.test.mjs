@@ -48,6 +48,7 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/css/responsive.css', 'text/css'],
     ['/js/main.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
+    ['/images/portada/portada.jpg', 'image/jpeg'],
   ];
 
   for (const [ruta, tipo] of recursos) {
