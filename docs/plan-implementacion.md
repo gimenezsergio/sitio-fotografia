@@ -184,17 +184,19 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 **Tareas:** generar variantes JPEG/WebP a 480 y 800 px sin ampliar originales; usar `srcset`/`sizes`; priorizar portada, carga diferida del portfolio y dimensiones explícitas. No se agregó AVIF porque no se justificó sumar otro formato.
 **Archivos:** `data/fotografias.json`, `images/portada/variantes/`, `images/portfolio/variantes/`, `js/portada.js`, `js/gallery.js`, `README.md`, `tests/estructura.test.mjs`, `tests/portada.test.mjs`, `tests/gallery.test.mjs`.
 **Criterios de aceptación:** cada variante existe y conserva el formato original; el renderizador produce `srcset` ordenado y `sizes`; la portada conserva prioridad alta y dimensiones; la galería mantiene carga diferida y dimensiones; todos los recursos responden con MIME correcto.
-**Pruebas:** `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 32/32; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. Los tests HTTP solicitaron las 17 variantes y verificaron código 200 y MIME. La inspección visual local confirmó la portada y las ocho fotos renderizadas; el cálculo del candidato por viewport queda cubierto por `srcset`/`sizes` y pruebas unitarias, sin una medición Lighthouse ni captura de red emulada.
+**Pruebas:** `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 32/32; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. Los tests HTTP solicitaron las 16 variantes y verificaron código 200 y MIME. La inspección visual local confirmó la portada y las ocho fotos renderizadas; el cálculo del candidato por viewport queda cubierto por `srcset`/`sizes` y pruebas unitarias, sin una medición Lighthouse ni captura de red emulada.
 **Registro de cierre:** se generaron 16 variantes para portada y siete fotos de galería. La foto 08 (480 px original) no se amplió ni recibió una variante. El formato de cada original se conserva; las imágenes mantienen dimensiones intrínsecas, la portada usa `fetchPriority=high` y la galería `loading=lazy`/`decoding=async`. Se corrigió además una frase obsoleta del README que decía que la configuración seguía vacía.
 
 ### Paso 14 — SEO y revisión integral
 
-**Estado:** pendiente. **Depende de:** pasos 6 a 13, dominio e imagen autorizada para compartir.  
+**Estado:** en progreso. **Depende de:** pasos 6 a 13; dominio e imagen autorizada para completar URLs públicas y tarjeta social.
 **Objetivo:** dejar completo el sitio público.  
-**Tareas:** título, descripción, Open Graph, favicon, URL canónica, `robots.txt`, sitemap; revisar castellano, accesibilidad y alcance.  
-**Archivos:** `index.html`, `robots.txt`, `sitemap.xml`, `images/` para favicon e imagen social, `tests/`, `README.md`.  
-**Criterios de aceptación:** metadatos y rutas reales, texto principal en HTML, sin errores importantes ni funcionalidades fuera del MVP.  
-**Pruebas:** `node --test`, validador, flujos completos, visual en cuatro anchos, teclado, contraste, movimiento reducido y Lighthouse.
+**Tareas:** incorporar metadatos base y Open Graph sin URLs dependientes del dominio; permitir rastreo público en `robots.txt`. Pendiente: favicon alineado a identidad, URL canónica, sitemap y URL de imagen social una vez definido dominio e imagen autorizada. Revisar castellano, accesibilidad y alcance.
+**Archivos:** `index.html`, `robots.txt`, `scripts/servidor-local.mjs`, `tests/estructura.test.mjs`.
+**Criterios de aceptación de esta etapa:** título y descripción existentes; Open Graph declara tipo, idioma, título y descripción en castellano; `robots.txt` permite rastreo y responde con MIME correcto. El cierre del paso completo requiere el dominio y la imagen aprobada.
+**Pruebas:** `node --test`, validador, flujos completos, visual en cuatro anchos, teclado, contraste, movimiento reducido y Lighthouse. En esta etapa se verifican las nuevas etiquetas y el recurso `robots.txt` por HTTP.
+
+**Registro parcial (12/10/2026):** se añadieron metadatos de tema y Open Graph (tipo, locale, título y descripción) y `robots.txt` con rastreo permitido. `node --test` pasó 32/32; `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. La suite verifica etiquetas y ruta/MIME/contenido del archivo. El paso permanece en progreso: faltan dominio para canonical/sitemap, imagen autorizada para `og:image` y cerrar favicon y revisión integral.
 
 ### Paso 15 — Publicación en Debian/Nginx
 

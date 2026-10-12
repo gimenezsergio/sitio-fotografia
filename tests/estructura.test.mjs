@@ -22,6 +22,11 @@ after(async () => {
 test('el HTML declara castellano argentino y referencias locales existentes', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /<html lang="es-AR">/);
+  assert.match(html, /<meta name="description" content="Portfolio fotográfico de Sergio Gimenez/);
+  assert.match(html, /<meta property="og:type" content="website">/);
+  assert.match(html, /<meta property="og:locale" content="es_AR">/);
+  assert.match(html, /<meta property="og:title" content="Sergio Gimenez/);
+  assert.match(html, /<meta property="og:description" content="Portfolio fotográfico de Sergio Gimenez/);
   assert.match(html, /href="\/css\/styles\.css"/);
   assert.match(html, /href="\/css\/responsive\.css"/);
   assert.match(html, /href="\/css\/lightbox\.css"/);
@@ -57,6 +62,7 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/js/gallery.js', 'text/javascript'],
     ['/js/lightbox.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
+    ['/robots.txt', 'text/plain'],
     ['/images/portada/portada.jpg', 'image/jpeg'],
     ['/images/portfolio/01.jpg', 'image/jpeg'],
     ['/images/portfolio/02.webp', 'image/webp'],
@@ -81,6 +87,9 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     assert.equal(respuesta.status, 200, ruta);
     assert.match(respuesta.headers.get('content-type'), new RegExp(tipo));
   }
+
+  const robots = await fetch(`${origen}/robots.txt`);
+  assert.equal(await robots.text(), 'User-agent: *\nAllow: /\n');
 });
 
 test('la configuración de producción define ocho fotos de galería en orden', async () => {
