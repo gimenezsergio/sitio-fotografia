@@ -23,6 +23,10 @@
     aspect-ratio: 4 / 5;
   }
 
+  .portada__imagen img {
+    object-position: var(--posicion-escritorio, var(--posicion-movil, 50% 50%));
+  }
+
   .portada__texto {
     grid-column: 1 / 7;
     grid-row: 1;

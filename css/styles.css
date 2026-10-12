@@ -87,6 +87,14 @@ header a {
   aspect-ratio: 4 / 5;
 }
 
+.portada__imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--posicion-movil, 50% 50%);
+}
+
 .portada__texto {
   max-width: 48rem;
   padding-block: 0.5rem;

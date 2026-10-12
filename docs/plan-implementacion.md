@@ -104,12 +104,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 6 — Portada editorial
 
-**Estado:** pendiente. **Depende de:** pasos 2 y 5, fotografía autorizada y criterio de altura/encuadre.  
+**Estado:** en progreso. **Depende de:** pasos 2 y 5, fotografía autorizada y criterio de altura/encuadre.
 **Objetivo:** presentar la identidad visual y profesional.  
 **Tareas:** cargar portada desde JSON con posición móvil/escritorio; incluir en HTML inicial nombre, «Fotografía de moda y editorial» y «Buenos Aires, Argentina»; evitar texto sobre rostros.  
 **Archivos:** `index.html`, `js/main.js`, `css/styles.css`, `css/responsive.css`, `data/fotografias.json`, `images/portada/`, `tests/`.  
 **Criterios de aceptación:** una portada, altura acordada, encuadre intencional y texto legible en móvil y escritorio incluso si JavaScript falla.  
 **Pruebas:** validador, `node --test`, revisión a 360, 390, 768 y 1440 px, texto y consola con y sin JS.
+
+**Avance (12/10/2026):** se integró el renderizador de portada, el texto alternativo, dimensiones, prioridad de carga y posiciones de encuadre móvil/escritorio. Las pruebas unitarias verifican estos atributos y que el marcador se conserva si falta la portada. La carpeta `images/portada/` todavía no contiene el original de la publicación seleccionada; falta incorporar y revisar ese recurso para validar el encuadre real y cerrar el paso.
 
 ### Paso 7 — Galería lineal desde JSON
 
