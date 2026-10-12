@@ -126,7 +126,7 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 **Nota de contenido inicial:** siete fotos correspondían a las publicaciones preseleccionadas. Para la octava posición se incorporó entonces una miniatura alternativa de 480 × 640 del perfil porque no se pudo extraer el recurso original. Esa imagen ya no forma parte de la selección activa.
 
-**Actualización de selección (12/10/2026):** Sergio eliminó las fotos iniciales 03, 06 y 08 y agregó cuatro archivos en `images/portfolio/nuevas/`. La galería activa conserva 01, 02, 04 y 07 e incorpora las cuatro nuevas; la foto 05 se reemplazó en la secuencia por la nueva del muro turquesa para reducir la repetición de fondos azules. El JSON vuelve a cumplir la cantidad de ocho fotos y no referencia las imágenes eliminadas.
+**Actualización de selección (12/10/2026):** Sergio eliminó las fotos iniciales 03, 06 y 08 y agregó cuatro archivos. La galería activa conserva 01, 02, 04 y 07 e incorpora las cuatro nuevas; la foto 05 se reemplazó en la secuencia por la nueva del muro turquesa para reducir la repetición de fondos azules. El JSON vuelve a cumplir la cantidad de ocho fotos y no referencia las imágenes eliminadas.
 
 ### Paso 8 — Composiciones editoriales
 
@@ -186,12 +186,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 **Estado:** completado (12/10/2026). **Depende de:** pasos 6 a 8 y fotos incorporadas.
 **Objetivo:** evitar transferencias excesivas y saltos de diseño.  
 **Tareas:** generar variantes JPEG/WebP a 480 y 800 px sin ampliar originales; usar `srcset`/`sizes`; priorizar portada, carga diferida del portfolio y dimensiones explícitas. No se agregó AVIF porque no se justificó sumar otro formato.
-**Archivos:** `data/fotografias.json`, `images/portada/variantes/`, `images/portfolio/variantes/`, `js/portada.js`, `js/gallery.js`, `README.md`, `tests/estructura.test.mjs`, `tests/portada.test.mjs`, `tests/gallery.test.mjs`.
+**Archivos:** `data/fotografias.json`, `images/portada/variantes/`, `images/portfolio/`, `js/portada.js`, `js/gallery.js`, `README.md`, `tests/estructura.test.mjs`, `tests/portada.test.mjs`, `tests/gallery.test.mjs`.
 **Criterios de aceptación:** cada variante existe y conserva el formato original; el renderizador produce `srcset` ordenado y `sizes`; la portada conserva prioridad alta y dimensiones; la galería mantiene carga diferida y dimensiones; todos los recursos responden con MIME correcto.
 **Pruebas:** `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 32/32; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. Los tests HTTP solicitaron las 16 variantes y verificaron código 200 y MIME. La inspección visual local confirmó la portada y las ocho fotos renderizadas; el cálculo del candidato por viewport queda cubierto por `srcset`/`sizes` y pruebas unitarias, sin una medición Lighthouse ni captura de red emulada.
 **Registro de cierre:** se generaron 16 variantes para portada y siete fotos de galería. La foto 08 (480 px original) no se amplió ni recibió una variante. El formato de cada original se conserva; las imágenes mantienen dimensiones intrínsecas, la portada usa `fetchPriority=high` y la galería `loading=lazy`/`decoding=async`. Se corrigió además una frase obsoleta del README que decía que la configuración seguía vacía.
 
 **Actualización de contenido (12/10/2026):** se generaron ocho variantes responsive para las cuatro fotos nuevas. La configuración activa suma ahora 18 variantes entre portada y ocho fotos, manteniendo el formato de origen en cada una.
+
+**Actualización de organización (12/10/2026):** se eliminaron las subcarpetas `nuevas/` y `variantes/` de la galería. Los ocho originales activos y sus 16 variantes responsive ahora están directamente en `images/portfolio/`, con nombres descriptivos. Se añadió una prueba que impide volver a referenciarlos desde subcarpetas.
 
 ### Paso 14 — SEO y revisión integral
 

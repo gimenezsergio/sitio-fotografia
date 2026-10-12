@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { after, before, test } from 'node:test';
 import { crearServidorLocal } from '../scripts/servidor-local.mjs';
 
@@ -109,6 +109,16 @@ test('la configuración de producción define ocho fotos de galería en orden', 
     'capucha-gris', 'abrigo-claro-arcos', 'flores-fondo-rosa', 'retrato-estudio',
     'moda-urbana-mochila', 'denim-muro-turquesa', 'top-claro-denim', 'retrato-blanco-negro',
   ]);
+});
+
+test('las fotos y sus variantes están directamente en una sola carpeta', async () => {
+  const contenido = await readFile(new URL('../data/fotografias.json', import.meta.url), 'utf8');
+  const fotografias = JSON.parse(contenido).fotografias.filter((foto) => foto.composicion !== 'portada');
+  const rutas = fotografias.flatMap((foto) => [foto.archivo, ...(foto.variantes ?? []).map((variante) => variante.archivo)]);
+  const entradas = await readdir(new URL('../images/portfolio/', import.meta.url), { withFileTypes: true });
+
+  assert.ok(rutas.every((ruta) => /^\/images\/portfolio\/[^/]+$/.test(ruta)));
+  assert.ok(entradas.every((entrada) => entrada.isFile()), 'images/portfolio no debe contener subcarpetas');
 });
 
 test('el servidor responde 404 a archivos inexistentes y 405 a métodos no admitidos', async () => {

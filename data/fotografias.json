@@ -22,8 +22,8 @@
       "ancho": 1440,
       "alto": 1920,
       "variantes": [
-        { "archivo": "/images/portfolio/variantes/01-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/variantes/01-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/01-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/01-800.jpg", "ancho": 800 }
       ]
     },
     {
@@ -34,20 +34,20 @@
       "ancho": 1440,
       "alto": 1800,
       "variantes": [
-        { "archivo": "/images/portfolio/variantes/02-480.webp", "ancho": 480 },
-        { "archivo": "/images/portfolio/variantes/02-800.webp", "ancho": 800 }
+        { "archivo": "/images/portfolio/02-480.webp", "ancho": 480 },
+        { "archivo": "/images/portfolio/02-800.webp", "ancho": 800 }
       ]
     },
     {
       "id": "flores-fondo-rosa",
-      "archivo": "/images/portfolio/nuevas/sergiogimenezph_1583328227_2257443246395444600_3902249988.jpg",
+      "archivo": "/images/portfolio/flores-rosa.jpg",
       "alt": "Modelo con tocado de flores y ramo sobre un fondo rosa",
       "composicion": "pareja-derecha",
       "ancho": 1080,
       "alto": 1080,
       "variantes": [
-        { "archivo": "/images/portfolio/nuevas/variantes/1583328227_2257443246395444600-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/nuevas/variantes/1583328227_2257443246395444600-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/flores-rosa-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/flores-rosa-800.jpg", "ancho": 800 }
       ]
     },
     {
@@ -58,32 +58,32 @@
       "ancho": 1080,
       "alto": 1440,
       "variantes": [
-        { "archivo": "/images/portfolio/variantes/04-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/variantes/04-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/04-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/04-800.jpg", "ancho": 800 }
       ]
     },
     {
       "id": "moda-urbana-mochila",
-      "archivo": "/images/portfolio/nuevas/sergiogimenezph_1708012209_3303368293833432845_3902249988.webp",
+      "archivo": "/images/portfolio/moda-urbana.webp",
       "alt": "Modelo con conjunto claro y mochila en una calle urbana",
       "composicion": "desplazada-izquierda",
       "ancho": 1080,
       "alto": 1184,
       "variantes": [
-        { "archivo": "/images/portfolio/nuevas/variantes/1708012209_3303368293833432845-480.webp", "ancho": 480 },
-        { "archivo": "/images/portfolio/nuevas/variantes/1708012209_3303368293833432845-800.webp", "ancho": 800 }
+        { "archivo": "/images/portfolio/moda-urbana-480.webp", "ancho": 480 },
+        { "archivo": "/images/portfolio/moda-urbana-800.webp", "ancho": 800 }
       ]
     },
     {
       "id": "denim-muro-turquesa",
-      "archivo": "/images/portfolio/nuevas/sergiogimenezph_1737144624_3547748705809730568_3902249988.jpg",
+      "archivo": "/images/portfolio/denim-turquesa.jpg",
       "alt": "Modelo con prendas de denim y gafas rojas frente a un muro turquesa",
       "composicion": "desplazada-derecha",
       "ancho": 1440,
       "alto": 1800,
       "variantes": [
-        { "archivo": "/images/portfolio/nuevas/variantes/1737144624_3547748705809730568-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/nuevas/variantes/1737144624_3547748705809730568-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/denim-turquesa-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/denim-turquesa-800.jpg", "ancho": 800 }
       ]
     },
     {
@@ -94,20 +94,20 @@
       "ancho": 1080,
       "alto": 1440,
       "variantes": [
-        { "archivo": "/images/portfolio/variantes/07-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/variantes/07-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/07-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/07-800.jpg", "ancho": 800 }
       ]
     },
     {
       "id": "retrato-blanco-negro",
-      "archivo": "/images/portfolio/nuevas/sergiogimenezph_1636305911_2701852269005473596_3902249988.jpg",
+      "archivo": "/images/portfolio/blanco-negro.jpg",
       "alt": "Retrato en blanco y negro de dos modelos en una composición íntima",
       "composicion": "pareja-derecha",
       "ancho": 1080,
       "alto": 1080,
       "variantes": [
-        { "archivo": "/images/portfolio/nuevas/variantes/1636305911_2701852269005473596-480.jpg", "ancho": 480 },
-        { "archivo": "/images/portfolio/nuevas/variantes/1636305911_2701852269005473596-800.jpg", "ancho": 800 }
+        { "archivo": "/images/portfolio/blanco-negro-480.jpg", "ancho": 480 },
+        { "archivo": "/images/portfolio/blanco-negro-800.jpg", "ancho": 800 }
       ]
     }
   ]
