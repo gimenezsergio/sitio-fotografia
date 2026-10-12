@@ -10,7 +10,7 @@ try {
   });
 
   const { port } = servidor.address();
-  for (const ruta of ['/', '/css/styles.css', '/js/main.js', '/data/fotografias.json']) {
+  for (const ruta of ['/', '/css/styles.css', '/css/responsive.css', '/js/main.js', '/data/fotografias.json']) {
     const respuesta = await fetch(`http://127.0.0.1:${port}${ruta}`);
     assert.equal(respuesta.status, 200, `${ruta} debe responder 200`);
     assert.ok((await respuesta.text()).length > 0, `${ruta} no debe estar vacío`);

@@ -23,6 +23,7 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /<html lang="es-AR">/);
   assert.match(html, /href="\/css\/styles\.css"/);
+  assert.match(html, /href="\/css\/responsive\.css"/);
   assert.match(html, /src="\/js\/main\.js"/);
   assert.match(html, /Fotografía de moda y editorial/);
 });
@@ -31,6 +32,7 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
   const recursos = [
     ['/', 'text/html'],
     ['/css/styles.css', 'text/css'],
+    ['/css/responsive.css', 'text/css'],
     ['/js/main.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
   ];

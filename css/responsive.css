@@ -1,0 +1,37 @@
+@media (min-width: 48rem) {
+  header {
+    min-height: 5rem;
+    padding-block: 1.5rem;
+  }
+
+  header a {
+    font-size: 0.75rem;
+  }
+
+  main > section {
+    min-height: 64svh;
+    padding-block: clamp(5rem, 14vh, 10rem);
+  }
+
+  h1 {
+    margin-bottom: 1.75rem;
+  }
+
+  main p {
+    font-size: 1.0625rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  :root {
+    --espacio-borde: clamp(4rem, 8vw, 8rem);
+  }
+
+  header {
+    min-height: 5.5rem;
+  }
+
+  main > section {
+    padding-right: 12vw;
+  }
+}

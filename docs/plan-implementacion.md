@@ -50,12 +50,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 2 — Base visual mobile first
 
-**Estado:** pendiente. **Depende de:** paso 1 y decisión sobre fuentes.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 1 y decisión sobre fuentes.
 **Objetivo:** establecer paleta, tipografía y reglas de legibilidad.  
 **Tareas:** definir los cuatro colores de la especificación, jerarquía, espaciados, fuentes locales autorizadas o alternativas de sistema y movimiento reducido.  
 **Archivos:** `css/styles.css`, `css/responsive.css`, `fonts/` si corresponde, `tests/`.  
 **Criterios de aceptación:** colores correctos, texto legible, sin fuentes externas obligatorias ni desplazamiento horizontal a 360, 390, 768 y 1440 px.  
 **Pruebas:** `node --test`, inspección en cuatro anchos, contraste y `prefers-reduced-motion`.
+
+**Registro de cierre:** se definieron los tokens de color y tipografía con alternativas de sistema, espaciado adaptable, jerarquía editorial y reglas responsive. `node --test` pasó 5/5 pruebas, incluyendo contraste AA para texto principal, paleta, breakpoints y movimiento reducido. `node scripts/comprobar-sitio.mjs` confirmó respuesta 200 de HTML, CSS base, CSS responsive, JS y JSON. La revisión visual en 360, 390, 768 y 1440 px mostró texto legible y sin desbordamiento horizontal.
 
 ### Paso 3 — Cabecera y destino de navegación
 
