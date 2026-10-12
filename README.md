@@ -24,3 +24,23 @@ node scripts/comprobar-sitio.mjs
 ```
 
 No se requieren paquetes externos. Node.js no forma parte de los requisitos del sitio publicado.
+
+## Configuración fotográfica
+
+`data/fotografias.json` contiene un objeto con una lista ordenada `fotografias`. Cada foto requiere:
+
+- `id`: identificador único en minúsculas, números y guiones.
+- `archivo`: ruta local existente bajo `/images/`, con extensión AVIF, JPEG, PNG o WebP.
+- `alt`: descripción accesible; no se muestra como pie de foto.
+- `composicion`: `portada`, `ancho-completo`, `vertical-destacada`, `pareja-izquierda`, `pareja-derecha`, `desplazada-izquierda` o `desplazada-derecha`.
+- `ancho` y `alto`: dimensiones originales en píxeles, como enteros positivos.
+
+La lista debe tener exactamente una portada. Una foto `pareja-izquierda` debe ir inmediatamente antes de su `pareja-derecha`. Solo la portada admite `posicionMovil` y `posicionEscritorio`, cada una con dos porcentajes (por ejemplo, `"50% 40%"`). Las variantes responsive son opcionales y usan `{ "archivo": "/images/portada-800.webp", "ancho": 800 }`; sus anchos deben ser únicos y menores que el original.
+
+Validá el archivo antes de incorporarlo:
+
+```sh
+node scripts/validar-fotografias.mjs
+```
+
+También podés indicar otro archivo JSON como argumento. El validador exige al menos una foto y que todos los archivos existan. Por eso, la configuración inicial permanece vacía hasta recibir e incorporar fotografías autorizadas; las pruebas automatizadas usan imágenes temporales y no agregan fotos ficticias al portfolio.

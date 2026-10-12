@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1, 2 y 3 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 4 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -82,12 +82,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 4 — Contrato y validación de fotografías
 
-**Estado:** pendiente. **Depende de:** paso 1 y acuerdo sobre esquema JSON.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 1 y acuerdo sobre esquema JSON.
 **Objetivo:** tener una configuración comprobable antes de mostrar imágenes.  
 **Tareas:** definir identificador, ruta, `alt`, composición, dimensiones, variantes y encuadres opcionales; validar archivos, portada única y parejas completas; documentar el contrato.  
 **Archivos:** `data/fotografias.json`, `scripts/validar-fotografias.mjs`, `tests/fotografias.test.mjs`, `README.md`.  
 **Criterios de aceptación:** el validador acepta datos correctos y rechaza identificadores duplicados, archivos ausentes, composiciones inválidas, portada incorrecta y parejas incompletas con errores comprensibles.  
 **Pruebas:** `node --test` con casos válidos e inválidos; `node scripts/validar-fotografias.mjs` cuando haya imágenes reales.
+
+**Registro de cierre:** se definió y documentó el esquema JSON (identificador, ruta, texto alternativo, composición, dimensiones, variantes y encuadres de portada) y se implementó `scripts/validar-fotografias.mjs`. Las pruebas cubren configuración válida, IDs repetidos, archivos faltantes, rutas fuera de `images/`, composición y portada, parejas, descripciones, dimensiones, encuadres y variantes. `node --test` pasó 10/10 pruebas. El JSON de producción sigue vacío porque faltan las fotos originales; el validador lo informa como incompleto hasta incorporarlas.
 
 ### Paso 5 — Carga del JSON en navegador
 
