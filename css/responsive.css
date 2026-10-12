@@ -39,6 +39,10 @@
     gap: 1.25rem;
   }
 
+  .portfolio__grilla > img {
+    grid-column: 1 / -1;
+  }
+
   .portfolio__grilla .marcador-imagen--uno {
     grid-column: 1 / 8;
     aspect-ratio: 4 / 3;

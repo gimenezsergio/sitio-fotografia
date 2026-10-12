@@ -139,8 +139,14 @@ main p + p {
 
 .portfolio__grilla {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
+}
+
+.portfolio__grilla > img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .aviso-carga {

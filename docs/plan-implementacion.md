@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 6 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 7 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -115,12 +115,16 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 7 — Galería lineal desde JSON
 
-**Estado:** pendiente. **Depende de:** pasos 5 y 6 y ocho fotos autorizadas.  
+**Estado:** completado (12/10/2026). **Depende de:** pasos 5 y 6 y ocho fotos del perfil.
 **Objetivo:** mostrar ocho fotos en el orden configurado.  
 **Tareas:** renderizar imágenes con `alt`, dimensiones y carga diferida; preservar proporciones y omitir pies y metadatos visibles.  
 **Archivos:** `index.html`, `js/gallery.js`, `js/main.js`, `css/styles.css`, `data/fotografias.json`, `images/portfolio/`, `tests/`.  
 **Criterios de aceptación:** exactamente ocho fotos además de portada; cambiar el orden JSON cambia el orden visual; no hay recortes arbitrarios.  
 **Pruebas:** validador, `node --test`, prueba funcional de cantidad y orden, revisión móvil/escritorio.
+
+**Registro de cierre:** se añadieron ocho fotos de galería al JSON y un módulo Vanilla JS que las renderiza en el orden configurado, con textos alternativos, dimensiones y carga diferida; la portada se excluye de la galería. La cuadrícula mantiene las proporciones y presenta la secuencia a una columna para dejar las composiciones editoriales para el paso 8. `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node --test` pasó 21/21; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. HTTP confirmó el módulo y los ocho archivos con sus tipos MIME. En navegador se verificaron las ocho imágenes y el orden en el árbol accesible, y la visualización a 390 px y escritorio no mostró recortes ni desbordamiento.
+
+**Nota de contenido:** siete fotos corresponden a las publicaciones preseleccionadas. Para la octava posición se incorporó una imagen alternativa del perfil (vestuario oscuro contra pared clara), porque el navegador no pudo extraer el recurso de la publicación DSF6rP5icK2. Es una miniatura de 480 × 640; reemplazarla por el archivo original antes del cierre editorial/publicación si se elige esta foto.
 
 ### Paso 8 — Composiciones editoriales
 

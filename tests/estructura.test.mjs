@@ -47,8 +47,17 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/css/styles.css', 'text/css'],
     ['/css/responsive.css', 'text/css'],
     ['/js/main.js', 'text/javascript'],
+    ['/js/gallery.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
     ['/images/portada/portada.jpg', 'image/jpeg'],
+    ['/images/portfolio/01.jpg', 'image/jpeg'],
+    ['/images/portfolio/02.webp', 'image/webp'],
+    ['/images/portfolio/03.jpg', 'image/jpeg'],
+    ['/images/portfolio/04.jpg', 'image/jpeg'],
+    ['/images/portfolio/05.jpg', 'image/jpeg'],
+    ['/images/portfolio/06.jpg', 'image/jpeg'],
+    ['/images/portfolio/07.jpg', 'image/jpeg'],
+    ['/images/portfolio/08.jpg', 'image/jpeg'],
   ];
 
   for (const [ruta, tipo] of recursos) {
@@ -56,6 +65,16 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     assert.equal(respuesta.status, 200, ruta);
     assert.match(respuesta.headers.get('content-type'), new RegExp(tipo));
   }
+});
+
+test('la configuración de producción define ocho fotos de galería en orden', async () => {
+  const contenido = await readFile(new URL('../data/fotografias.json', import.meta.url), 'utf8');
+  const fotografias = JSON.parse(contenido).fotografias;
+  assert.equal(fotografias.filter((foto) => foto.composicion === 'portada').length, 1);
+  assert.deepEqual(fotografias.filter((foto) => foto.composicion !== 'portada').map((foto) => foto.id), [
+    'capucha-gris', 'abrigo-claro-arcos', 'conjunto-falda-marron', 'retrato-estudio',
+    'retrato-muro-azul', 'abrigo-gris-muro', 'top-claro-denim', 'conjunto-negro-muro',
+  ]);
 });
 
 test('el servidor responde 404 a archivos inexistentes y 405 a métodos no admitidos', async () => {
