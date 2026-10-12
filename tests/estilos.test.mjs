@@ -33,3 +33,9 @@ test('usa fuentes con alternativas locales y reglas responsive mobile first', ()
   assert.match(responsive, /@media\s*\(min-width:\s*75rem\)/i);
   assert.match(estilos, /prefers-reduced-motion:\s*reduce/i);
 });
+
+test('el retrato personal conserva su proporción intrínseca', () => {
+  assert.match(estilos, /\.presentacion__retrato\s*\{[^}]*display:\s*block;[^}]*width:\s*min\(100%,\s*32rem\);/s);
+  assert.match(estilos, /\.presentacion__retrato img\s*\{[^}]*width:\s*100%;[^}]*height:\s*auto;/s);
+  assert.doesNotMatch(estilos.match(/\.presentacion__retrato\s*\{[^}]*\}/s)?.[0] ?? '', /aspect-ratio/);
+});

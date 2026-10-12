@@ -199,8 +199,14 @@ main p + p {
 }
 
 .presentacion__retrato {
+  display: block;
   width: min(100%, 32rem);
-  aspect-ratio: 4 / 5;
+}
+
+.presentacion__retrato img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .presentacion__texto {

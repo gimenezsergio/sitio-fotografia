@@ -1,7 +1,7 @@
 # Plan de implementación — Portfolio de Sergio Gimenez
 
 **Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 10 y 13 completados, maqueta general completada.
+**Estado general:** en desarrollo; pasos 1 a 11 y 13 completados, maqueta general completada.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -161,12 +161,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 11 — Presentación personal
 
-**Estado:** pendiente. **Depende de:** paso 2 y retrato real.  
+**Estado:** completado (12/10/2026). **Depende de:** paso 2 y retrato real recibido en `images/Sergio-Gimenez.png`.
 **Objetivo:** presentar a Sergio con retrato, nombre, ubicación y texto editable.  
-**Tareas:** añadir sección semántica, retrato autorizado y texto provisional o aprobado en HTML.  
-**Archivos:** `index.html`, `css/styles.css`, `css/responsive.css`, `images/perfil/`, `tests/`.  
-**Criterios de aceptación:** cuatro elementos presentes, texto independiente de JS, retrato con alternativa accesible y diseño legible en móvil/escritorio.  
-**Pruebas:** `node --test`, revisión responsive y con teclado.
+**Tareas:** usar el retrato entregado por Sergio, describirlo con texto alternativo, conservar su proporción original y entregar WebP responsive mediante `<picture>` sin frameworks.
+**Archivos:** `index.html`, `css/styles.css`, `images/Sergio-Gimenez.png`, `images/perfil/variantes/`, `tests/estructura.test.mjs`, `tests/estilos.test.mjs`.
+**Criterios de aceptación:** nombre, texto, ubicación y retrato presentes; texto independiente de JS; alt accesible; fallback PNG existente; versiones WebP con MIME correcto; sin recorte del retrato y diseño legible en móvil/escritorio.
+**Pruebas:** `node --test`, validador, comprobación HTTP de archivo original/variantes y revisión responsive visual.
+
+**Registro de cierre:** se integró el retrato `images/Sergio-Gimenez.png` (PNG de 1024 × 1536) como imagen accesible con dimensiones explícitas, carga diferida y alternativa WebP responsive (600 × 900 y 900 × 1350). CSS conserva la proporción original para no recortar la foto. `node --test` pasó 33/33; `node scripts/validar-fotografias.mjs` pasó con nueve fotos; `git diff --check` pasó. Las pruebas HTTP verificaron el original PNG y las dos variantes WebP con sus MIME. La revisión visual confirmó la presentación completa a 1270 px y el retrato sin recorte a 390 px.
 
 ### Paso 12 — Contacto definitivo
 

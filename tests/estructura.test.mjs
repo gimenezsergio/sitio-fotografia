@@ -44,12 +44,16 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.ok(galeria, 'la galería debe estar presente');
   assert.equal((galeria.match(/class="marcador-imagen /g) ?? []).length, 8);
   assert.match(html, /Fotografía de portada pendiente/);
-  assert.match(html, /Retrato pendiente/);
+  assert.match(html, /Retrato de Sergio Gimenez sentado frente a un fondo claro/);
   assert.match(html, /<dialog class="lightbox" id="lightbox" aria-label="Visor de fotografías" aria-modal="true">/);
   assert.match(html, /class="lightbox__cerrar" type="button">Cerrar/);
   assert.match(html, /class="lightbox__anterior" type="button">Anterior/);
   assert.match(html, /class="lightbox__siguiente" type="button">Siguiente/);
   assert.match(html, /<img class="lightbox__imagen" alt="">/);
+  assert.match(html, /<picture class="presentacion__retrato">/);
+  assert.match(html, /src="\/images\/Sergio-Gimenez\.png"/);
+  assert.match(html, /alt="Retrato de Sergio Gimenez sentado frente a un fondo claro"/);
+  assert.match(html, /width="1024"\s+height="1536"\s+loading="lazy"\s+decoding="async"/);
 });
 
 test('la página y sus recursos responden por HTTP con tipos correctos', async () => {
@@ -64,6 +68,9 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/data/fotografias.json', 'application/json'],
     ['/robots.txt', 'text/plain'],
     ['/images/portada/portada.jpg', 'image/jpeg'],
+    ['/images/Sergio-Gimenez.png', 'image/png'],
+    ['/images/perfil/variantes/sergio-600.webp', 'image/webp'],
+    ['/images/perfil/variantes/sergio-900.webp', 'image/webp'],
     ['/images/portfolio/01.jpg', 'image/jpeg'],
     ['/images/portfolio/02.webp', 'image/webp'],
     ['/images/portfolio/03.jpg', 'image/jpeg'],

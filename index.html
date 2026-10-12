@@ -47,9 +47,19 @@
       </section>
 
       <section class="presentacion" aria-labelledby="presentacion-personal-titulo">
-        <div class="marcador-imagen presentacion__retrato" role="img" aria-label="Espacio reservado para el retrato de Sergio Gimenez">
-          <span>Retrato pendiente</span>
-        </div>
+        <picture class="presentacion__retrato">
+          <source
+            type="image/webp"
+            srcset="/images/perfil/variantes/sergio-600.webp 600w, /images/perfil/variantes/sergio-900.webp 900w"
+            sizes="(min-width: 768px) 42vw, 100vw">
+          <img
+            src="/images/Sergio-Gimenez.png"
+            alt="Retrato de Sergio Gimenez sentado frente a un fondo claro"
+            width="1024"
+            height="1536"
+            loading="lazy"
+            decoding="async">
+        </picture>
         <div class="presentacion__texto">
           <p class="sobrelinea">El fotógrafo</p>
           <h2 id="presentacion-personal-titulo">Sergio Gimenez</h2>
