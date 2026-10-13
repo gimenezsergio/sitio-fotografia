@@ -166,7 +166,7 @@ main p + p {
 
 .aviso-carga {
   margin: 0 0 1rem;
-  color: var(--color-tinta-suave);
+  color: var(--color-texto);
   font-size: 0.875rem;
   text-align: center;
 }
@@ -251,12 +251,6 @@ h2 {
   padding-bottom: 0.2rem;
   border-bottom: 1px solid currentColor;
   font-size: 1.125rem;
-}
-
-.contacto__pendiente {
-  margin-top: 1.5rem;
-  color: #d0cbc4;
-  font-size: 0.875rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

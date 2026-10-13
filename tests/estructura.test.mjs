@@ -22,11 +22,29 @@ after(async () => {
 test('el HTML declara castellano argentino y referencias locales existentes', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /<html lang="es-AR">/);
-  assert.match(html, /<meta name="description" content="Portfolio fotográfico de Sergio Gimenez/);
+  assert.match(html, /<meta name="description" content="SER\. — Fotografía de moda y editorial en Buenos Aires, Argentina\.">/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/byser\.com\.ar\/">/);
   assert.match(html, /<meta property="og:type" content="website">/);
   assert.match(html, /<meta property="og:locale" content="es_AR">/);
-  assert.match(html, /<meta property="og:title" content="Sergio Gimenez/);
-  assert.match(html, /<meta property="og:description" content="Portfolio fotográfico de Sergio Gimenez/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/byser\.com\.ar\/">/);
+  assert.match(html, /<meta property="og:title" content="SER\. — Fotografía de moda y editorial">/);
+  assert.match(html, /<meta property="og:description" content="SER\. — Fotografía de moda y editorial en Buenos Aires, Argentina\.">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/byser\.com\.ar\/images\/ser-open-graph\.png">/);
+  assert.match(html, /<meta property="og:image:type" content="image\/png">/);
+  assert.match(html, /<meta property="og:image:width" content="1200">/);
+  assert.match(html, /<meta property="og:image:height" content="630">/);
+  assert.match(html, /<meta property="og:image:alt" content="SER\. — Fotografía de moda y editorial">/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image">/);
+  assert.match(html, /<meta name="twitter:title" content="SER\. — Fotografía de moda y editorial">/);
+  assert.match(html, /<meta name="twitter:description" content="SER\. — Fotografía de moda y editorial en Buenos Aires, Argentina\.">/);
+  assert.match(html, /<meta name="twitter:image" content="https:\/\/byser\.com\.ar\/images\/ser-open-graph\.png">/);
+  assert.match(html, /<meta name="twitter:image:alt" content="SER\. — Fotografía de moda y editorial">/);
+  assert.match(html, /<link rel="icon" type="image\/png" sizes="16x16" href="\/images\/favicon-16\.png">/);
+  assert.match(html, /<link rel="icon" type="image\/png" sizes="32x32" href="\/images\/favicon-32\.png">/);
+  assert.match(html, /<title>SER\. — Fotografía de moda y editorial<\/title>/);
+  assert.match(html, /aria-label="Inicio — SER\."[^>]*>SER\.<\/a>/);
+  assert.match(html, /<h1 id="presentacion-titulo">SER\.<\/h1>/);
+  assert.match(html, /<p class="sobrelinea">Sobre mí<\/p>\s*<h2 id="presentacion-personal-titulo">Sergio Gimenez<\/h2>/);
   assert.match(html, /href="\/css\/styles\.css"/);
   assert.match(html, /href="\/css\/responsive\.css"/);
   assert.match(html, /href="\/css\/lightbox\.css"/);
@@ -37,6 +55,8 @@ test('el HTML declara castellano argentino y referencias locales existentes', as
   assert.match(html, /class="portada"/);
   assert.match(html, /class="presentacion"/);
   assert.match(html, /class="contacto"/);
+  assert.match(html, /href="https:\/\/www\.instagram\.com\/sergiogimenezph\/"[^>]*>Instagram<\/a>/);
+  assert.doesNotMatch(html, /mailto:|Correo electrónico pendiente de configurar/);
   assert.match(html, /id="aviso-carga" role="status" hidden/);
   assert.match(html, /No se pudieron cargar las fotografías/);
 
@@ -67,6 +87,10 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
     ['/js/lightbox.js', 'text/javascript'],
     ['/data/fotografias.json', 'application/json'],
     ['/robots.txt', 'text/plain'],
+    ['/sitemap.xml', 'application/xml'],
+    ['/images/favicon-16.png', 'image/png'],
+    ['/images/favicon-32.png', 'image/png'],
+    ['/images/ser-open-graph.png', 'image/png'],
     ['/images/portada/portada.jpg', 'image/jpeg'],
     ['/images/Sergio-Gimenez.png', 'image/png'],
     ['/images/perfil/variantes/sergio-600.webp', 'image/webp'],
@@ -98,7 +122,16 @@ test('la página y sus recursos responden por HTTP con tipos correctos', async (
   }
 
   const robots = await fetch(`${origen}/robots.txt`);
-  assert.equal(await robots.text(), 'User-agent: *\nAllow: /\n');
+  assert.equal(await robots.text(), 'User-agent: *\nAllow: /\nSitemap: https://byser.com.ar/sitemap.xml\n');
+
+  const sitemap = await fetch(`${origen}/sitemap.xml`);
+  assert.equal(await sitemap.text(), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://byser.com.ar/</loc>
+  </url>
+</urlset>
+`);
 });
 
 test('la configuración de producción define ocho fotos de galería en orden', async () => {

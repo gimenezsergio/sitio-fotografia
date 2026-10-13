@@ -39,3 +39,8 @@ test('el retrato personal conserva su proporción intrínseca', () => {
   assert.match(estilos, /\.presentacion__retrato img\s*\{[^}]*width:\s*100%;[^}]*height:\s*auto;/s);
   assert.doesNotMatch(estilos.match(/\.presentacion__retrato\s*\{[^}]*\}/s)?.[0] ?? '', /aspect-ratio/);
 });
+
+test('el aviso de error de galería usa un color definido con contraste principal', () => {
+  assert.match(estilos, /\.aviso-carga\s*\{[^}]*color:\s*var\(--color-texto\);/s);
+  assert.doesNotMatch(estilos, /var\(--color-tinta-suave\)/);
+});

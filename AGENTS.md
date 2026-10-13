@@ -1,7 +1,7 @@
 # Instrucciones para Codex
 
 ## Proyecto
-Portfolio fotográfico personal de Sergio Gimenez.
+Portfolio público de SER. (`https://byser.com.ar/`), marca de Sergio Gimenez, fotógrafo de moda y editorial en Buenos Aires, Argentina.
 
 ## Documentación
 - Leer `docs/especificacion.md` antes de implementar funcionalidades.
@@ -23,6 +23,7 @@ No utilizar React, Vue, Eleventy, Netlify ni frameworks innecesarios.
 - Todo el contenido visible en castellano.
 - Fotografías sin títulos ni descripciones visibles.
 - Respetar la identidad visual definida en la especificación.
+- Escribir la marca visible como `SER.`; conservar `Sergio Gimenez` en «Sobre mí» como autor de las fotografías.
 
 ## Metodología de trabajo
 - Trabajar en pasos pequeños.

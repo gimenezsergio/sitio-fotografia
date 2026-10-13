@@ -1,7 +1,7 @@
-# Plan de implementación — Portfolio de Sergio Gimenez
+# Plan de implementación — Portfolio SER.
 
-**Alcance:** MVP público de una página, según `docs/especificacion.md` v1.0.  
-**Estado general:** en desarrollo; pasos 1 a 11 y 13 completados, maqueta general completada.
+**Alcance:** MVP público de una página, según `docs/especificacion.md` v1.1.
+**Estado general:** sitio público implementado y revisado; pasos 1 a 14 completados, paso 15 (publicación VPS) pendiente.
 **Arquitectura:** HTML5, CSS Vanilla, JavaScript Vanilla con módulos ES, JSON para fotografías, Debian y Nginx. Sin backend, generador estático ni aplicación privada de sesiones.
 
 ## Hallazgos y decisiones pendientes
@@ -10,15 +10,10 @@ No hay contradicciones estructurales. La especificación se declara lista para i
 
 | Tema | Riesgo o ambigüedad | Propuesta y dependencia |
 | --- | --- | --- |
-| Fotografías | Hay una preselección aceptada de publicaciones del perfil, pero aún no se revisaron las imágenes completas ni se obtuvieron archivos aptos para web. | Usar las publicaciones indicadas abajo como referencia. Verificar autoría, elección exacta en carruseles, encuadre y calidad antes de incorporar archivos. Necesario para pasos 6 a 8 y 13. |
-| Retrato y correo | Faltan el retrato real y el correo de contacto. | No inventarlos. Necesarios para pasos 11 y 12. |
-| Dominio e imagen para compartir | Sin dominio no pueden cerrarse URL canónica, sitemap, Open Graph ni HTTPS. | Completar antes de pasos 14 y 15. |
-| Esquema JSON | El ejemplo no define variantes responsive, dimensiones, asociación de parejas ni encuadres editoriales. | Acordar un esquema mínimo documentado antes del paso 4. Conservar orden visual por orden del JSON y portada única. |
-| Portada de pantalla completa | No se aclara si la cabecera cuenta dentro de la altura visible. | Propuesta: cabecera y portada caben juntas en una pantalla móvil visible, sin tapar imagen ni texto. Acordar antes del paso 6. |
-| Fuentes | Se admiten fuentes locales o de sistema; faltan archivos y condiciones de uso. | Usar Cormorant Garamond e Inter locales solo con archivos autorizados; mientras tanto, alternativas de sistema. Antes del paso 2. |
+| Texto de presentación | El texto actual funciona como versión provisional. | Mantenerlo hasta que Sergio decida si quiere reemplazarlo. No bloquea la revisión técnica. |
 | VPS existente | Se desconocen servicios, rutas y acceso. | Inspeccionar antes de definir o aplicar configuración; no afectar servicios existentes. Antes del paso 15. |
 
-El texto provisional de presentación puede usarse hasta que Sergio entregue la versión final. El HTML inicial contendrá los textos principales aunque falle JavaScript. Las descripciones alternativas serán accesibles y nunca pies visibles. Un fallo de carga del JSON mostrará un aviso discreto en castellano.
+La portada, el retrato y las ocho fotografías de galería ya están incorporados. El contacto queda por ahora solo en Instagram, sin correo ni texto provisional visible. El HTML inicial contiene el texto principal aunque falle JavaScript; las descripciones alternativas son accesibles y nunca pies visibles. Un fallo de carga del JSON muestra un aviso discreto en castellano.
 
 ## Ajuste visual solicitado después del paso 2
 
@@ -32,12 +27,12 @@ El texto provisional de presentación puede usarse hasta que Sergio entregue la 
 
 ### Preselección fotográfica aceptada
 
-La elección se basa en las miniaturas públicas del perfil de Instagram; el detalle de cada publicación pidió iniciar sesión. El orden es una propuesta editorial, pendiente de verificar los archivos completos, los carruseles y la calidad de origen. No se han descargado ni incorporado imágenes al proyecto.
+La elección se basa en la preselección editorial aprobada. Las fotos originales y sus variantes están incorporadas en el sitio. Las futuras incorporaciones se revisarán por autoría, encuadre y calidad antes de publicarlas.
 
 - **Portada:** [vestido oscuro frente a los arcos](https://www.instagram.com/sergiogimenezph/p/DUWteB_jQpG/).
 - **Portfolio, en orden:** [capucha gris](https://www.instagram.com/sergiogimenezph/p/DcwP3IvRNV2/), [abrigo claro entre arcos](https://www.instagram.com/damaris.medina_/p/DdHtIMGFFCg/), [conjunto oscuro y falda marrón](https://www.instagram.com/morena.myn/p/DdPiu5RCYyZ/), [retrato de estudio](https://www.instagram.com/sergiogimenezph/p/DZknAClEZa2/), [modelo pelirroja junto al muro azul](https://www.instagram.com/sergiogimenezph/p/DUEQ4lZiaqv/), [abrigo gris contra el muro](https://www.instagram.com/sergiogimenezph/p/Db1SO8pRqfI/), [top claro y denim](https://www.instagram.com/sergiogimenezph/p/DVb5sUSibyv/), [modelo de negro junto al muro cálido](https://www.instagram.com/sergiogimenezph/p/DSF6rP5icK2/).
 
-Para el sitio se prefieren exportaciones originales facilitadas por Sergio. Si se recurre a archivos publicados en Instagram, se comprobará su resolución y se evitará presentarlos como versiones definitivas si la calidad no alcanza.
+Las fotografías activas se administran desde `data/fotografias.json`; la galería contiene ocho trabajos y una portada.
 
 ## Método y pruebas
 
@@ -73,7 +68,7 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 **Estado:** completado (12/10/2026). **Depende de:** paso 2.
 **Objetivo:** hacer funcional la navegación mínima.  
-**Tareas:** cabecera con solo `SERGIO GIMENEZ` y `CONTACTO`; crear destino semántico de la sección final y ajustar foco y ancla.  
+**Tareas:** cabecera con la marca y `CONTACTO`; crear destino semántico de la sección final y ajustar foco y ancla. La marca vigente desde el 13/10/2026 es `SER.`.
 **Archivos:** `index.html`, `css/styles.css`, `css/responsive.css`, `tests/`.  
 **Criterios de aceptación:** el enlace llega al destino con teclado y ratón sin ocultar contenido.  
 **Pruebas:** `node --test`, Tab y Enter, revisión a 360 y 1440 px.
@@ -174,12 +169,14 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 12 — Contacto definitivo
 
-**Estado:** pendiente. **Depende de:** paso 3 y correo aprobado.  
-**Objetivo:** ofrecer Instagram y correo sin formulario.  
-**Tareas:** completar sección negra tinta con invitación breve, Instagram especificado y `mailto:` definitivo.  
+**Estado:** completado (13/10/2026). **Alcance actual:** contacto por Instagram; correo excluido por decisión de Sergio.
+**Objetivo:** ofrecer un canal de contacto sin formulario.
+**Tareas:** sección de contacto con invitación breve, enlace verificado a Instagram y navegación desde cabecera; no mostrar un marcador de correo pendiente.
 **Archivos:** `index.html`, `css/styles.css`, `css/responsive.css`, `tests/`.  
-**Criterios de aceptación:** ambos destinos correctos; `CONTACTO` llega; no hay formulario; contraste y foco adecuados.  
-**Pruebas:** `node --test`, comprobación de URLs y teclado, revisión de contraste.
+**Criterios de aceptación:** enlace de Instagram correcto; `CONTACTO` llega; no hay formulario ni correo inventado; contraste y foco adecuados.
+**Pruebas:** `node --test`, comprobación de URL y teclado, revisión de contraste.
+
+**Registro:** se quitó el texto «Correo electrónico pendiente de configurar» por decisión de Sergio. El HTML y las pruebas confirman Instagram como único contacto visible y ausencia de `mailto:`. `node --test tests/estructura.test.mjs` pasó 5/5.
 
 ### Paso 13 — Imágenes responsive y rendimiento
 
@@ -197,18 +194,26 @@ Desde el paso 1 se usarán comprobaciones automáticas con Node.js y su ejecutor
 
 ### Paso 14 — SEO y revisión integral
 
-**Estado:** en progreso. **Depende de:** pasos 6 a 13; dominio e imagen autorizada para completar URLs públicas y tarjeta social.
+**Estado:** completado (13/10/2026). **Depende de:** pasos 6 a 13.
 **Objetivo:** dejar completo el sitio público.  
-**Tareas:** incorporar metadatos base y Open Graph sin URLs dependientes del dominio; permitir rastreo público en `robots.txt`. Pendiente: favicon alineado a identidad, URL canónica, sitemap y URL de imagen social una vez definido dominio e imagen autorizada. Revisar castellano, accesibilidad y alcance.
-**Archivos:** `index.html`, `robots.txt`, `scripts/servidor-local.mjs`, `tests/estructura.test.mjs`.
-**Criterios de aceptación de esta etapa:** título y descripción existentes; Open Graph declara tipo, idioma, título y descripción en castellano; `robots.txt` permite rastreo y responde con MIME correcto. El cierre del paso completo requiere el dominio y la imagen aprobada.
-**Pruebas:** `node --test`, validador, flujos completos, visual en cuatro anchos, teclado, contraste, movimiento reducido y Lighthouse. En esta etapa se verifican las nuevas etiquetas y el recurso `robots.txt` por HTTP.
+**Tareas:** mantener metadatos base, URL canónica, Open Graph, Twitter Cards, sitemap y `robots.txt` consistentes con `https://byser.com.ar/`. Favicon «S» e imagen social tipográfica aprobados y activos. Revisar castellano, accesibilidad, responsive, consola y alcance.
+**Archivos:** `index.html`, `robots.txt`, `sitemap.xml`, `scripts/servidor-local.mjs`, `tests/estructura.test.mjs` y propuestas separadas en `docs/propuestas-identidad/`.
+**Criterios de aceptación:** título, descripción y marca SER.; URL principal absoluta en canonical, Open Graph, sitemap y robots; Twitter Cards en castellano; favicon e imagen social aprobados y activos; sitio funcional y accesible en móvil y escritorio.
+**Pruebas:** `node --test`, validador, comprobación HTTP, flujos de teclado/lightbox, contraste, consola y vista en 360, 390, 768 y 1440 px. Lighthouse no está instalado en el entorno; no se añadió una dependencia de auditoría.
 
-**Registro parcial (12/10/2026):** se añadieron metadatos de tema y Open Graph (tipo, locale, título y descripción) y `robots.txt` con rastreo permitido. `node --test` pasó 32/32; `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. La suite verifica etiquetas y ruta/MIME/contenido del archivo. El paso permanece en progreso: faltan dominio para canonical/sitemap, imagen autorizada para `og:image` y cerrar favicon y revisión integral.
+**Registro parcial (12/10/2026):** se añadieron metadatos de tema y Open Graph (tipo, locale, título y descripción) y `robots.txt` con rastreo permitido. `node --test` pasó 32/32; `node scripts/validar-fotografias.mjs` pasó con nueve imágenes; `node scripts/comprobar-sitio.mjs` y `git diff --check` pasaron. La suite verificó etiquetas y ruta/MIME/contenido del archivo. En esa fecha todavía faltaban el dominio para canonical/sitemap, una imagen autorizada para `og:image` y el favicon.
+
+**Actualización de identidad y dominio (13/10/2026):** SER. reemplaza la marca visible anterior en cabecera y portada; Sergio Gimenez permanece como autor en «Sobre mí». `https://byser.com.ar/` es la única URL principal en canonical, `og:url`, sitemap y robots. Se actualizaron título, descripciones, Open Graph y Twitter Cards. Se prepararon tres alternativas de favicon y una imagen social tipográfica de 1200 × 630 en `docs/propuestas-identidad/`; en ese momento no se habían activado los recursos visuales. `node --test` pasó 34/34, el validador confirmó nueve imágenes, la comprobación HTTP y `git diff --check` pasaron. Luego se aprobaron y activaron ambas propuestas, y se completó la revisión integral según el registro siguiente. No se tocó DNS, Nginx ni HTTPS.
+
+**Aprobación del favicon (13/10/2026):** Sergio eligió la alternativa «S». Se copiaron las versiones PNG de 16 × 16 y 32 × 32 a `images/` y se enlazaron desde `index.html`. Las cinco pruebas de estructura y recursos HTTP pasaron. La propuesta de imagen social sigue sin activar y requiere aprobación independiente.
+
+**Aprobación de imagen social (13/10/2026):** Sergio aprobó la propuesta tipográfica. Se incorporó `images/ser-open-graph.png` (1200 × 630, PNG de 8 bits) y se enlazó mediante URL absoluta en `og:image` y `twitter:image`, con dimensiones, tipo y texto alternativo. Las cinco pruebas de estructura y recursos HTTP pasaron. La revisión integral se completó posteriormente, como consta en el registro siguiente.
+
+**Registro de revisión integral (13/10/2026):** se quitó el marcador de correo por decisión de Sergio y se dejó Instagram como único contacto visible. Se corrigió la variable de color inexistente del aviso de error de galería; el texto usa el color principal. `node --test` pasó 35/35; `node scripts/comprobar-sitio.mjs`, `node scripts/validar-fotografias.mjs` (nueve imágenes) y `git diff --check` pasaron. En navegador se comprobaron vistas de 360, 390, 768 y 1440 px sin desbordamiento horizontal, carga de portada y ocho fotos, navegación por teclado a Contacto, apertura/cierre de lightbox y foco restaurado. No hubo errores ni avisos de consola. Contraste medido: 16.05:1 en contenido principal/aviso, 6.73:1 en marcador y 16.34:1 en contacto. Lighthouse no estaba disponible en el entorno y no se agregó ninguna dependencia. El paso queda completado; la publicación en VPS sigue pendiente.
 
 ### Paso 15 — Publicación en Debian/Nginx
 
-**Estado:** pendiente. **Depende de:** paso 14, dominio y acceso al VPS.  
+**Estado:** pendiente. **Depende de:** paso 14 y acceso al VPS.
 **Objetivo:** servir el portfolio por HTTPS y documentar actualizaciones repetibles.  
 **Tareas:** inspeccionar servicios existentes; preparar configuración Nginx, certificado, rutas y caché; documentar despliegue desde GitHub antes de tocar el servidor.  
 **Archivos:** `README.md` y, si corresponde, configuración versionada en `deploy/`; cambios en VPS tras inspección y aprobación concreta.  

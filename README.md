@@ -1,6 +1,8 @@
-# Portfolio fotográfico
+# SER. — Portfolio fotográfico
 
-Sitio público de Sergio Gimenez, desarrollado con HTML, CSS y JavaScript sin frameworks.
+Sitio público de SER. (`https://byser.com.ar/`), de Sergio Gimenez, fotógrafo de moda y editorial en Buenos Aires. Desarrollado con HTML, CSS y JavaScript sin frameworks.
+
+La URL canónica, Open Graph, Twitter Cards, `robots.txt` y `sitemap.xml` usan el dominio oficial. El favicon «S» aprobado se sirve en 16 × 16 y 32 × 32 píxeles desde `images/`. La imagen social tipográfica aprobada se sirve desde `/images/ser-open-graph.png` (1200 × 630 píxeles). Los archivos de `docs/propuestas-identidad/` conservan las propuestas originales y no se sirven como recursos activos.
 
 ## Requisitos para desarrollo
 

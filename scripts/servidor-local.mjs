@@ -15,6 +15,7 @@ const tiposContenido = new Map([
   ['.png', 'image/png'],
   ['.txt', 'text/plain; charset=utf-8'],
   ['.webp', 'image/webp'],
+  ['.xml', 'application/xml; charset=utf-8'],
 ]);
 
 export function crearServidorLocal() {

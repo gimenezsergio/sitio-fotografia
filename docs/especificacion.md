@@ -1,12 +1,14 @@
-# Especificación técnica — Portfolio de Sergio Gimenez
+# Especificación técnica — Portfolio SER.
 
-**Versión:** 1.0  
+**Versión:** 1.1
 **Estado:** Listo para implementación  
 **Alcance:** MVP del sitio público
 
 ## 1. Objetivo
 
-Desarrollar un sitio web personal para Sergio Gimenez, fotógrafo especializado en moda y retrato editorial en Buenos Aires.
+Desarrollar el sitio público de SER., marca personal de Sergio Gimenez, fotógrafo especializado en moda y editorial en Buenos Aires, Argentina. El dominio oficial es `https://byser.com.ar/`.
+
+SER es su diminutivo y alude al verbo «ser»: identidad, presencia y expresión. La marca visible se escribe siempre `SER.`. El nombre completo identifica al autor en «Sobre mí».
 
 El sitio debe transmitir una identidad profesional, artística y confiable, especialmente a modelos que llegan desde convocatorias o publicidades de Instagram.
 
@@ -21,7 +23,7 @@ Una única página pública con cuatro partes:
 1. Portada editorial a pantalla completa.
 2. Portfolio fotográfico de narrativa continua.
 3. Presentación personal con retrato del fotógrafo.
-4. Contacto mediante Instagram y correo electrónico.
+4. Contacto mediante Instagram. El correo es opcional y se incorpora solo cuando Sergio lo proporcione.
 
 Las fotografías podrán ampliarse mediante un lightbox.
 
@@ -100,7 +102,7 @@ Todo el contenido visible debe estar en castellano.
 
 Contiene exclusivamente:
 
-- Nombre: SERGIO GIMENEZ.
+- Marca: SER.
 - Enlace: CONTACTO.
 
 El enlace CONTACTO lleva a la sección final de la misma página.
@@ -112,7 +114,7 @@ La cabecera debe ser discreta y no ocultar contenido al desplazarse.
 - Fotografía protagonista.
 - Altura equivalente al área visible de la pantalla.
 - Adaptación a formatos verticales y horizontales.
-- Nombre del fotógrafo y especialidad.
+- Marca SER. y especialidad.
 - Texto: «Fotografía de moda y editorial».
 - Ubicación: «Buenos Aires, Argentina».
 
@@ -172,7 +174,7 @@ Mostrar:
 
 Texto provisional:
 
-«Soy Sergio Gimenez, fotógrafo de moda y retrato editorial en Buenos Aires. Me interesa construir imágenes donde el vestuario, la luz y los espacios dialoguen con la personalidad de cada modelo.»
+«Soy Sergio Gimenez, fotógrafo de moda y editorial en Buenos Aires. Me interesa construir imágenes donde el vestuario, la luz y los espacios dialoguen con la personalidad de cada modelo.»
 
 El contenido debe poder modificarse fácilmente sin alterar la estructura del sitio.
 
@@ -184,7 +186,7 @@ Incluir:
 
 - Invitación breve al contacto.
 - Enlace a Instagram: `https://www.instagram.com/sergiogimenezph/`
-- Enlace de correo electrónico, pendiente de configurar.
+- No mostrar correo ni un marcador de correo mientras no se proporcione una dirección.
 
 No incorporar formularios.
 
@@ -293,11 +295,13 @@ Implementar:
 - Meta description.
 - Idioma `es-AR`.
 - Open Graph.
-- Imagen para compartir enlaces.
-- Favicon.
-- URL canónica cuando se defina el dominio.
-- Sitemap cuando exista dominio definitivo.
+- Imagen tipográfica para compartir enlaces, aprobada y activa en 1200 × 630 píxeles.
+- Favicon «S» aprobado, activo en 16 × 16 y 32 × 32 píxeles.
+- URL canónica `https://byser.com.ar/`.
+- Sitemap con la URL principal absoluta.
 - `robots.txt`.
+
+Open Graph y Twitter Cards usan SER. y la misma URL principal. `og:image` y `twitter:image` apuntan a `https://byser.com.ar/images/ser-open-graph.png`; la imagen no usa fotografías externas. Las propuestas originales están en `docs/propuestas-identidad/` y no forman parte de la página publicada.
 
 No utilizar fotografías de terceros como si fueran trabajos del fotógrafo.
 
@@ -381,11 +385,11 @@ Cada paso debe completarse y probarse antes de avanzar al siguiente.
 
 ### Paso 10 — Contacto
 
-**Implementar:** Instagram, correo electrónico y navegación desde la cabecera.
+**Implementar:** Instagram y navegación desde la cabecera. El correo es opcional y requiere una dirección confirmada.
 
 **Aceptar cuando:** los enlaces funcionan y no existe formulario.
 
-**Pruebas:** enlaces externos, `mailto:` y navegación interna.
+**Pruebas:** enlace externo y navegación interna; si se incorpora correo, verificar su `mailto:`.
 
 ### Paso 11 — Optimización
 
@@ -451,10 +455,6 @@ El MVP estará terminado cuando:
 
 ## 14. Pendientes
 
-- Dominio definitivo.
-- Selección de fotografías reales.
-- Retrato personal.
-- Dirección de correo de contacto.
 - Texto definitivo de presentación.
 - Configuración específica de despliegue según los servicios existentes en el VPS.
 
